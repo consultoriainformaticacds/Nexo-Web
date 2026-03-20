@@ -7,407 +7,139 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #0A0A0A;
-      --off-black: #111110;
-      --dark: #1A1A18;
-      --white: #F8F8F5;
-      --off-white: #EFEFEB;
-      --muted: #888880;
-      --accent: #C8F135;
-      --accent-dark: #A8D020;
+      --black: #0A0A0A; --off-black: #111110; --dark: #1A1A18;
+      --white: #F8F8F5; --muted: #888880;
+      --accent: #C8F135; --accent-dark: #A8D020;
       --border: rgba(255,255,255,0.08);
-      --border-light: rgba(255,255,255,0.04);
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Instrument Sans', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; cursor: none; }
 
-    body {
-      font-family: 'Instrument Sans', sans-serif;
-      background: var(--black);
-      color: var(--white);
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* ── CURSOR ── */
-    .cursor {
-      width: 10px; height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-    }
+    .cursor { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background 0.3s; }
     .cursor.hover { width: 36px; height: 36px; background: transparent; border: 1.5px solid var(--accent); }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.5rem 4rem;
-      border-bottom: 1px solid var(--border);
-      background: rgba(10,10,10,0.85);
-      backdrop-filter: blur(16px);
-      animation: fadeDown 0.7s ease both;
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.3rem; font-weight: 800;
-      letter-spacing: -0.02em; color: var(--white);
-      text-decoration: none;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 4rem; border-bottom: 1px solid var(--border); background: rgba(10,10,10,0.85); backdrop-filter: blur(16px); animation: fadeDown 0.7s ease both; }
+    .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; color: var(--white); text-decoration: none; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.8rem; font-weight: 400; letter-spacing: 0.06em;
-      color: var(--muted); text-decoration: none; transition: color 0.2s;
-    }
+    .nav-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; letter-spacing: 0.06em; }
     .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
-      color: var(--black); background: var(--accent);
-      border: none; cursor: none; padding: 0.65rem 1.6rem;
-      text-decoration: none; transition: background 0.2s;
-    }
+    .nav-cta { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--black); background: var(--accent); padding: 0.65rem 1.6rem; text-decoration: none; transition: background 0.2s; }
     .nav-cta:hover { background: var(--accent-dark); }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 4rem 5rem;
-      position: relative; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background: var(--black);
-    }
-    .hero-bg-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(200,241,53,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,241,53,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-bg-glow {
-      position: absolute; top: -20%; right: -10%;
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,241,53,0.08) 0%, transparent 70%);
-    }
-    .hero-number {
-      position: absolute; right: 4rem; top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(10rem, 18vw, 22rem);
-      font-weight: 800; line-height: 1;
-      color: rgba(255,255,255,0.025);
-      letter-spacing: -0.05em;
-      user-select: none;
-    }
+    #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 4rem 5rem; position: relative; overflow: hidden; }
+    .hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,241,53,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,241,53,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero-bg-glow { position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(200,241,53,0.08) 0%, transparent 70%); }
+    .hero-number { position: absolute; right: 4rem; top: 50%; transform: translateY(-50%); font-family: 'Syne', sans-serif; font-size: clamp(10rem, 18vw, 22rem); font-weight: 800; color: rgba(255,255,255,0.025); letter-spacing: -0.05em; user-select: none; }
     .hero-content { position: relative; z-index: 1; max-width: 900px; }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 2rem;
-      animation: fadeUp 0.8s 0.2s ease both;
-    }
-    .hero-tag::before {
-      content: ''; width: 24px; height: 1px; background: var(--accent);
-    }
-    .hero-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(3.5rem, 7vw, 8rem);
-      font-weight: 800; line-height: 0.95;
-      letter-spacing: -0.03em;
-      margin-bottom: 2.5rem;
-      animation: fadeUp 0.8s 0.35s ease both;
-    }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; animation: fadeUp 0.8s 0.2s ease both; }
+    .hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+    .hero-title { font-family: 'Syne', sans-serif; font-size: clamp(3.5rem, 7vw, 8rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 2.5rem; animation: fadeUp 0.8s 0.35s ease both; }
     .hero-title .line2 { color: var(--muted); }
-    .hero-title .line3 {
-      -webkit-text-stroke: 1px rgba(255,255,255,0.3);
-      color: transparent;
-    }
-    .hero-bottom {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      animation: fadeUp 0.8s 0.5s ease both;
-    }
-    .hero-desc {
-      font-size: 0.95rem; font-weight: 300; line-height: 1.8;
-      color: var(--muted); max-width: 380px;
-    }
+    .hero-title .line3 { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
+    .hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; animation: fadeUp 0.8s 0.5s ease both; }
+    .hero-desc { font-size: 0.95rem; font-weight: 300; line-height: 1.8; color: var(--muted); max-width: 380px; }
     .hero-actions { display: flex; gap: 1rem; align-items: center; }
-    .btn-primary {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
-      color: var(--black); background: var(--accent);
-      padding: 1rem 2.4rem; text-decoration: none;
-      transition: background 0.2s; display: inline-block;
-    }
+    .btn-primary { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--black); background: var(--accent); padding: 1rem 2.4rem; text-decoration: none; transition: background 0.2s; display: inline-block; }
     .btn-primary:hover { background: var(--accent-dark); }
-    .btn-outline {
-      font-size: 0.8rem; font-weight: 400; letter-spacing: 0.06em;
-      color: var(--muted); border: 1px solid var(--border);
-      padding: 1rem 2rem; text-decoration: none;
-      transition: color 0.2s, border-color 0.2s; display: inline-block;
-    }
+    .btn-outline { font-size: 0.8rem; color: var(--muted); border: 1px solid var(--border); padding: 1rem 2rem; text-decoration: none; transition: color 0.2s, border-color 0.2s; display: inline-block; }
     .btn-outline:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
 
-    /* ── TICKER ── */
-    .ticker {
-      background: var(--accent); overflow: hidden;
-      padding: 0.9rem 0; white-space: nowrap;
-    }
-    .ticker-inner {
-      display: inline-flex; gap: 3rem;
-      animation: ticker 20s linear infinite;
-    }
-    .ticker-item {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--black); display: flex; align-items: center; gap: 3rem;
-    }
+    .ticker { background: var(--accent); overflow: hidden; padding: 0.9rem 0; white-space: nowrap; }
+    .ticker-inner { display: inline-flex; gap: 3rem; animation: ticker 20s linear infinite; }
+    .ticker-item { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); display: flex; align-items: center; gap: 3rem; }
     .ticker-dot { width: 5px; height: 5px; background: var(--black); border-radius: 50%; opacity: 0.4; }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── SERVICIOS ── */
     #servicios { padding: 7rem 4rem; }
     .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
-    .section-label {
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;
-    }
-    .section-link {
-      font-size: 0.8rem; color: var(--muted); text-decoration: none;
-      border-bottom: 1px solid var(--border); padding-bottom: 2px;
-      transition: color 0.2s;
-    }
+    .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+    .section-link { font-size: 0.8rem; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s; }
     .section-link:hover { color: var(--white); }
 
     .servicios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
-    .servicio-card {
-      background: var(--off-black);
-      padding: 3rem 2.5rem;
-      position: relative; overflow: hidden;
-      transition: background 0.3s;
-      cursor: none;
-    }
-    .servicio-card::before {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: var(--accent);
-      transition: width 0.4s ease;
-    }
+    .servicio-card { background: var(--off-black); padding: 3rem 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; cursor: none; }
+    .servicio-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.4s ease; }
     .servicio-card:hover { background: var(--dark); }
     .servicio-card:hover::before { width: 100%; }
-    .servicio-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--accent); margin-bottom: 2rem; opacity: 0.7;
-    }
-    .servicio-icon {
-      font-size: 2rem; margin-bottom: 1.5rem; display: block;
-    }
-    .servicio-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.3rem; font-weight: 700;
-      letter-spacing: -0.01em; margin-bottom: 1rem;
-    }
-    .servicio-desc {
-      font-size: 0.85rem; line-height: 1.75;
-      color: var(--muted); font-weight: 300; margin-bottom: 2rem;
-    }
-    .servicio-price {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem; font-weight: 700; color: var(--accent);
-    }
-    .servicio-price span {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.75rem; font-weight: 300; color: var(--muted); margin-left: 0.3rem;
-    }
+    .servicio-num { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 2rem; opacity: 0.7; }
+    .servicio-icon { font-size: 2rem; margin-bottom: 1.5rem; display: block; }
+    .servicio-name { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
+    .servicio-desc { font-size: 0.85rem; line-height: 1.75; color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
+    .servicio-price { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+    .servicio-price span { font-family: 'Instrument Sans', sans-serif; font-size: 0.75rem; font-weight: 300; color: var(--muted); margin-left: 0.3rem; }
 
-    /* ── PROCESO ── */
     #proceso { padding: 7rem 4rem; background: var(--off-black); }
     .proceso-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--border); margin-top: 4rem; }
-    .proceso-step {
-      background: var(--off-black); padding: 2.5rem 2rem;
-      position: relative;
-    }
-    .proceso-step-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 3.5rem; font-weight: 800;
-      color: rgba(200,241,53,0.1); line-height: 1;
-      margin-bottom: 1.5rem; letter-spacing: -0.03em;
-    }
-    .proceso-step-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      margin-bottom: 0.8rem; letter-spacing: -0.01em;
-    }
-    .proceso-step-desc {
-      font-size: 0.82rem; line-height: 1.7;
-      color: var(--muted); font-weight: 300;
-    }
+    .proceso-step { background: var(--off-black); padding: 2.5rem 2rem; }
+    .proceso-step-num { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: rgba(200,241,53,0.1); line-height: 1; margin-bottom: 1.5rem; letter-spacing: -0.03em; }
+    .proceso-step-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.8rem; }
+    .proceso-step-desc { font-size: 0.82rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
 
-    /* ── POR QUÉ NEXO ── */
     #porque { padding: 7rem 4rem; }
     .porque-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; margin-top: 4rem; }
-    .porque-left { }
     .porque-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 3rem; }
-    .porque-stat {
-      background: var(--off-black); padding: 2rem;
-    }
-    .porque-stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.5rem; font-weight: 800;
-      color: var(--accent); letter-spacing: -0.03em; line-height: 1;
-    }
-    .porque-stat-label {
-      font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; font-weight: 300;
-    }
-    .porque-right { }
+    .porque-stat { background: var(--off-black); padding: 2rem; }
+    .porque-stat-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
+    .porque-stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; font-weight: 300; }
     .porque-list { list-style: none; margin-top: 1rem; }
-    .porque-item {
-      display: flex; gap: 1.2rem; align-items: flex-start;
-      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
-    }
-    .porque-item-icon {
-      width: 32px; height: 32px; background: rgba(200,241,53,0.1);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; flex-shrink: 0; margin-top: 0.1rem;
-    }
-    .porque-item-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem;
-    }
-    .porque-item-desc {
-      font-size: 0.82rem; color: var(--muted); line-height: 1.6; font-weight: 300;
-    }
+    .porque-item { display: flex; gap: 1.2rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+    .porque-item-icon { width: 32px; height: 32px; background: rgba(200,241,53,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .porque-item-title { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .porque-item-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
 
-    /* ── CTA ── */
-    #cta {
-      padding: 7rem 4rem;
-      background: var(--accent);
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 3rem;
-    }
-    .cta-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 4vw, 4rem);
-      font-weight: 800; letter-spacing: -0.03em;
-      color: var(--black); line-height: 1.05; max-width: 600px;
-    }
-    .cta-right { flex-shrink: 0; }
-    .btn-dark {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;
-      color: var(--accent); background: var(--black);
-      padding: 1.2rem 3rem; text-decoration: none;
-      transition: background 0.2s; display: inline-block;
-    }
+    #cta { padding: 7rem 4rem; background: var(--accent); display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
+    .cta-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 4rem); font-weight: 800; letter-spacing: -0.03em; color: var(--black); line-height: 1.05; max-width: 600px; }
+    .btn-dark { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--accent); background: var(--black); padding: 1.2rem 3rem; text-decoration: none; transition: background 0.2s; display: inline-block; }
     .btn-dark:hover { background: var(--off-black); }
 
-    /* ── CONTACTO ── */
     #contacto { padding: 7rem 4rem; background: var(--off-black); }
     .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; margin-top: 4rem; }
-    .contacto-info-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em;
-    }
-    .contacto-info p {
-      font-size: 0.88rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 2.5rem;
-    }
+    .contacto-info-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+    .contacto-info p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 2.5rem; }
     .contacto-datos { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .contacto-dato {
-      display: flex; gap: 1rem; align-items: center;
-      font-size: 0.85rem; color: var(--muted); font-weight: 300;
-    }
-    .contacto-dato strong {
-      font-weight: 500; color: var(--white); min-width: 80px;
-      font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.06em;
-    }
+    .contacto-dato { display: flex; gap: 1rem; align-items: flex-start; font-size: 0.85rem; color: var(--muted); font-weight: 300; }
+    .contacto-dato strong { font-weight: 500; color: var(--white); min-width: 80px; font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.06em; }
 
     .contacto-form { display: flex; flex-direction: column; gap: 1rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
-    .form-field label {
-      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
-    }
-    .form-field input, .form-field textarea, .form-field select {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.88rem; font-weight: 300;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 0;
-      padding: 0.85rem 1rem; color: var(--white);
-      outline: none; transition: border-color 0.2s; resize: none;
-      appearance: none;
-    }
-    .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
-      border-color: var(--accent);
-    }
+    .form-field label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .form-field input, .form-field textarea, .form-field select { font-family: 'Instrument Sans', sans-serif; font-size: 0.88rem; font-weight: 300; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 0; padding: 0.85rem 1rem; color: var(--white); outline: none; transition: border-color 0.2s; resize: none; appearance: none; }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--accent); }
     .form-field textarea { min-height: 100px; }
     .form-field select option { background: var(--dark); }
-    .form-submit {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em;
-      color: var(--black); background: var(--accent);
-      border: none; cursor: none; padding: 1rem 2.4rem;
-      transition: background 0.2s; align-self: flex-start; margin-top: 0.5rem;
-    }
+    .form-submit { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; color: var(--black); background: var(--accent); border: none; cursor: pointer; padding: 1rem 2.4rem; transition: background 0.2s; align-self: flex-start; margin-top: 0.5rem; }
     .form-submit:hover { background: var(--accent-dark); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    #form-status { margin-top: 0.8rem; font-size: 0.85rem; min-height: 1.5rem; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black);
-      border-top: 1px solid var(--border);
-      padding: 2rem 4rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .footer-logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem; font-weight: 800; color: var(--white);
-    }
+    footer { background: var(--black); border-top: 1px solid var(--border); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); }
     .footer-logo span { color: var(--accent); }
     footer p { font-size: 0.75rem; color: var(--muted); }
     .footer-links { display: flex; gap: 2rem; }
-    .footer-links a {
-      font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s;
-    }
+    .footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent); }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeUp   { from { opacity: 0; transform: translateY(28px);  } to { opacity: 1; transform: translateY(0); } }
-
-    .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       body { cursor: auto; }
       .cursor { display: none; }
       nav { padding: 1.2rem 1.5rem; }
       .nav-links { display: none; }
-      #hero { padding: 0 1.5rem 4rem; }
+      #hero, #servicios, #proceso, #porque, #cta, #contacto, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
       .hero-number { display: none; }
-      section, #servicios, #proceso, #porque, #contacto, #cta, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero-bottom { flex-direction: column; gap: 2rem; align-items: flex-start; }
       .servicios-grid { grid-template-columns: 1fr; }
       .proceso-grid { grid-template-columns: 1fr 1fr; }
-      .porque-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .contacto-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .porque-grid, .contacto-grid { grid-template-columns: 1fr; gap: 3rem; }
       #cta { flex-direction: column; align-items: flex-start; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
@@ -417,7 +149,6 @@
 
   <div class="cursor" id="cursor"></div>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">Nexo<span>.</span></a>
     <ul class="nav-links">
@@ -429,24 +160,19 @@
     <a href="#contacto" class="nav-cta">Hablar con nosotros</a>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg">
-      <div class="hero-bg-grid"></div>
-      <div class="hero-bg-glow"></div>
-    </div>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-glow"></div>
     <div class="hero-number">NX</div>
     <div class="hero-content">
-      <p class="hero-tag">Diseño web profesional</p>
+      <p class="hero-tag">Diseño web profesional · CABA, Argentina</p>
       <h1 class="hero-title">
         Tu negocio<br/>
         <span class="line2">merece una</span><br/>
         <span class="line3">web real.</span>
       </h1>
       <div class="hero-bottom">
-        <p class="hero-desc">
-          Creamos sitios web rápidos, modernos y efectivos para negocios que quieren crecer en internet. Sin complicaciones, con resultados.
-        </p>
+        <p class="hero-desc">Creamos sitios web rápidos, modernos y efectivos para negocios que quieren crecer en internet. Sin complicaciones, con resultados.</p>
         <div class="hero-actions">
           <a href="#servicios" class="btn-primary">Ver servicios</a>
           <a href="#contacto" class="btn-outline">Pedir presupuesto</a>
@@ -455,7 +181,6 @@
     </div>
   </section>
 
-  <!-- TICKER -->
   <div class="ticker">
     <div class="ticker-inner">
       <div class="ticker-item">Diseño web profesional <span class="ticker-dot"></span></div>
@@ -471,7 +196,6 @@
     </div>
   </div>
 
-  <!-- SERVICIOS -->
   <section id="servicios">
     <div class="section-header reveal">
       <div>
@@ -492,20 +216,19 @@
         <p class="servicio-num">02</p>
         <span class="servicio-icon">🖥</span>
         <h3 class="servicio-name">Diseño Web Completo</h3>
-        <p class="servicio-desc">Sitio web de múltiples secciones con diseño personalizado, formulario de contacto, mapa y optimización básica.</p>
+        <p class="servicio-desc">Sitio web de múltiples secciones con diseño personalizado, formulario de contacto y optimización básica.</p>
         <p class="servicio-price">Desde $350.000 <span>ARS — pago único</span></p>
       </div>
       <div class="servicio-card reveal">
         <p class="servicio-num">03</p>
         <span class="servicio-icon">🔄</span>
         <h3 class="servicio-name">Mantenimiento Mensual</h3>
-        <p class="servicio-desc">Actualizaciones de contenido, soporte técnico, revisiones y ajustes para que tu web esté siempre perfecta.</p>
+        <p class="servicio-desc">Actualizaciones de contenido, soporte técnico y ajustes para que tu web esté siempre perfecta.</p>
         <p class="servicio-price">Desde $60.000 <span>ARS / mes</span></p>
       </div>
     </div>
   </section>
 
-  <!-- PROCESO -->
   <section id="proceso">
     <div class="section-header reveal">
       <div>
@@ -537,7 +260,6 @@
     </div>
   </section>
 
-  <!-- POR QUÉ NEXO -->
   <section id="porque">
     <div class="section-header reveal">
       <div>
@@ -547,72 +269,42 @@
     </div>
     <div class="porque-grid">
       <div class="porque-left reveal">
-        <p style="font-size:0.92rem; color:var(--muted); line-height:1.8; font-weight:300;">
-          No somos una gran agencia con procesos lentos. Somos un equipo ágil que trabaja directamente con vos para entregar resultados reales en poco tiempo.
-        </p>
+        <p style="font-size:0.92rem; color:var(--muted); line-height:1.8; font-weight:300;">No somos una gran agencia con procesos lentos. Somos un equipo ágil que trabaja directamente con vos para entregar resultados reales en poco tiempo.</p>
         <div class="porque-stat-grid">
-          <div class="porque-stat">
-            <div class="porque-stat-num">7</div>
-            <div class="porque-stat-label">días promedio de entrega</div>
-          </div>
-          <div class="porque-stat">
-            <div class="porque-stat-num">100%</div>
-            <div class="porque-stat-label">clientes satisfechos</div>
-          </div>
-          <div class="porque-stat">
-            <div class="porque-stat-num">24h</div>
-            <div class="porque-stat-label">tiempo de respuesta</div>
-          </div>
-          <div class="porque-stat">
-            <div class="porque-stat-num">∞</div>
-            <div class="porque-stat-label">soporte post-entrega</div>
-          </div>
+          <div class="porque-stat"><div class="porque-stat-num">7</div><div class="porque-stat-label">días promedio de entrega</div></div>
+          <div class="porque-stat"><div class="porque-stat-num">100%</div><div class="porque-stat-label">clientes satisfechos</div></div>
+          <div class="porque-stat"><div class="porque-stat-num">24h</div><div class="porque-stat-label">tiempo de respuesta</div></div>
+          <div class="porque-stat"><div class="porque-stat-num">∞</div><div class="porque-stat-label">soporte post-entrega</div></div>
         </div>
       </div>
       <div class="porque-right reveal">
         <ul class="porque-list">
           <li class="porque-item">
             <div class="porque-item-icon">✦</div>
-            <div>
-              <p class="porque-item-title">Diseño a medida, no plantillas</p>
-              <p class="porque-item-desc">Cada web que hacemos es única. No usamos themes genéricos que parecen iguales a miles de otros sitios.</p>
-            </div>
+            <div><p class="porque-item-title">Diseño a medida, no plantillas</p><p class="porque-item-desc">Cada web que hacemos es única. No usamos themes genéricos que parecen iguales a miles de otros sitios.</p></div>
           </li>
           <li class="porque-item">
             <div class="porque-item-icon">✦</div>
-            <div>
-              <p class="porque-item-title">Entrega rápida garantizada</p>
-              <p class="porque-item-desc">En menos de una semana tenés tu web online. Sin demoras ni excusas.</p>
-            </div>
+            <div><p class="porque-item-title">Entrega rápida garantizada</p><p class="porque-item-desc">En menos de una semana tenés tu web online. Sin demoras ni excusas.</p></div>
           </li>
           <li class="porque-item">
             <div class="porque-item-icon">✦</div>
-            <div>
-              <p class="porque-item-title">Precios claros y fijos</p>
-              <p class="porque-item-desc">Nada de sorpresas. Sabés cuánto pagás desde el primer día. Sin costos ocultos.</p>
-            </div>
+            <div><p class="porque-item-title">Precios claros y fijos</p><p class="porque-item-desc">Nada de sorpresas. Sabés cuánto pagás desde el primer día. Sin costos ocultos.</p></div>
           </li>
           <li class="porque-item">
             <div class="porque-item-icon">✦</div>
-            <div>
-              <p class="porque-item-title">Soporte en español, siempre</p>
-              <p class="porque-item-desc">Hablamos tu idioma y entendemos el mercado local. Siempre hay alguien para responder.</p>
-            </div>
+            <div><p class="porque-item-title">Soporte en español, siempre</p><p class="porque-item-desc">Hablamos tu idioma y entendemos el mercado local. Siempre hay alguien para responder.</p></div>
           </li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section id="cta">
     <h2 class="cta-title reveal">¿Listo para tener la web que tu negocio necesita?</h2>
-    <div class="cta-right reveal">
-      <a href="#contacto" class="btn-dark">Empezar ahora →</a>
-    </div>
+    <div class="reveal"><a href="#contacto" class="btn-dark">Empezar ahora →</a></div>
   </section>
 
-  <!-- CONTACTO -->
   <section id="contacto">
     <p class="section-label reveal">Hablemos</p>
     <h2 class="section-title reveal">Pedí tu presupuesto gratis</h2>
@@ -628,50 +320,49 @@
         </ul>
       </div>
       <div class="contacto-form reveal">
-        <form action="https://formspree.io/f/xpqynaqq" method="POST">
-        <div class="form-row">
-          <div class="form-field">
-            <label>Nombre</label>
-            <input type="text" name="nombre" placeholder="Tu nombre" />
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+            </div>
           </div>
           <div class="form-field">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="tu@email.com" />
+            <label for="tipo_web">¿Qué tipo de web necesitás?</label>
+            <select id="tipo_web" name="tipo_web" required>
+              <option value="">Seleccioná una opción</option>
+              <option value="Landing page rápida">Landing page rápida</option>
+              <option value="Sitio web completo">Sitio web completo</option>
+              <option value="Mantenimiento de web existente">Mantenimiento de web existente</option>
+              <option value="No sé, necesito asesoramiento">No sé, necesito asesoramiento</option>
+            </select>
           </div>
-        </div>
-        <div class="form-field">
-          <label>¿Qué tipo de web necesitás?</label>
-          <select name="tipo_web">
-            <option value="">Seleccioná una opción</option>
-            <option>Landing page rápida</option>
-            <option>Sitio web completo</option>
-            <option>Mantenimiento de web existente</option>
-            <option>No sé, necesito asesoramiento</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Contanos de tu negocio</label>
-          <textarea name="mensaje" placeholder="¿A qué se dedica tu negocio? ¿Qué esperás de tu web?"></textarea>
-        </div>
-        <button type="submit" class="form-submit">Enviar consulta →</button>
+          <div class="form-field">
+            <label for="mensaje">Contanos de tu negocio</label>
+            <textarea id="mensaje" name="mensaje" placeholder="¿A qué se dedica tu negocio? ¿Qué esperás de tu web?"></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">Enviar consulta →</button>
+          <p id="form-status"></p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Nexo<span>.</span></div>
     <p>© 2025 Nexo Web. Todos los derechos reservados.</p>
     <div class="footer-links">
-      <a href="#">Instagram</a>
       <a href="https://wa.me/5491124632544" target="_blank">WhatsApp</a>
-      <a href="#">LinkedIn</a>
+      <a href="mailto:consultoriainformaticacds@gmail.com">Email</a>
     </div>
   </footer>
 
   <script>
-    // Custom cursor
+    // Cursor
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
@@ -683,11 +374,51 @@
     });
 
     // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-        }
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
       });
-    }, { th
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Formulario con Formspree
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('form-status');
+      const form = e.target;
+
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+      status.textContent = '';
+
+      try {
+        const response = await fetch('https://formspree.io/f/xpqynaqq', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            nombre: form.nombre.value,
+            email: form.email.value,
+            tipo_web: form.tipo_web.value,
+            mensaje: form.mensaje.value
+          })
+        });
+
+        if (response.ok) {
+          status.style.color = '#C8F135';
+          status.textContent = '✅ ¡Mensaje enviado! Te respondemos en menos de 24 horas.';
+          form.reset();
+        } else {
+          throw new Error('Error en el servidor');
+        }
+      } catch (err) {
+        status.style.color = '#ff6b6b';
+        status.textContent = '❌ Hubo un error. Escribinos a consultoriainformaticacds@gmail.com';
+      }
+
+      btn.textContent = 'Enviar consulta →';
+      btn.disabled = false;
+    });
+  </script>
+</body>
+</html>
