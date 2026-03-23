@@ -127,9 +127,22 @@
     #wa-float::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(37,211,102,0.3); animation: wa-pulse 2s ease-out infinite; }
     @keyframes wa-pulse { 0%{transform:scale(1);opacity:0.8} 100%{transform:scale(1.5);opacity:0} }
 
+    #portfolio { background: var(--off-black); padding: 5rem 2rem; }
+    .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); margin-bottom: 2rem; }
+    .portfolio-item { background: var(--off-black); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; text-decoration: none; transition: background 0.2s; flex-wrap: wrap; }
+    .portfolio-item:hover { background: var(--dark); }
+    .portfolio-item:hover .portfolio-arrow { color: var(--accent); }
+    .portfolio-rubro { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); min-width: 130px; }
+    .portfolio-name { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); flex: 1; }
+    .portfolio-nivel { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); white-space: nowrap; }
+    .portfolio-arrow { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; margin-left: auto; }
+    .portfolio-cta { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; border: 1px solid var(--border); flex-wrap: wrap; gap: 1rem; }
+    .portfolio-cta p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+    .portfolio-cta strong { color: var(--white); }
+
     @media (min-width: 768px) {
       nav { padding: 1.5rem 4rem; }
-      #hero, #servicios, #proceso, #porque, #cta, #contacto, footer { padding-left: 4rem; padding-right: 4rem; }
+      #hero, #servicios, #proceso, #porque, #portfolio, #cta, #contacto, footer { padding-left: 4rem; padding-right: 4rem; }
       .servicios-grid { grid-template-columns: repeat(3, 1fr); }
       .proceso-grid { grid-template-columns: repeat(4, 1fr); }
       .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; }
@@ -143,6 +156,7 @@
     <a class="nav-logo" href="#">Nexo<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -249,6 +263,58 @@
     </ul>
   </section>
 
+  <section id="portfolio">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Trabajos y demos</p>
+        <h2 class="section-title" style="margin-bottom:0">Lo que podemos hacer</h2>
+      </div>
+      <a href="https://nexo-landing.pages.dev/#portfolio" target="_blank" class="section-link">Ver todos →</a>
+    </div>
+    <div class="portfolio-grid">
+      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
+        <span class="portfolio-rubro">Estética</span>
+        <span class="portfolio-name">Lumière Studio Premium</span>
+        <span class="portfolio-nivel">Modelo 3</span>
+        <span class="portfolio-arrow">→</span>
+      </a>
+      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
+        <span class="portfolio-rubro">Gastronomía</span>
+        <span class="portfolio-name">Raíces Restaurante</span>
+        <span class="portfolio-nivel">Modelo 3</span>
+        <span class="portfolio-arrow">→</span>
+      </a>
+      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-psicologa" target="_blank">
+        <span class="portfolio-rubro">Salud</span>
+        <span class="portfolio-name">Psicóloga</span>
+        <span class="portfolio-nivel">Modelo 2</span>
+        <span class="portfolio-arrow">→</span>
+      </a>
+      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
+        <span class="portfolio-rubro">Estudio Jurídico</span>
+        <span class="portfolio-name">Fernández & Asociados</span>
+        <span class="portfolio-nivel">Modelo 2</span>
+        <span class="portfolio-arrow">→</span>
+      </a>
+      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-barberia" target="_blank">
+        <span class="portfolio-rubro">Barbería</span>
+        <span class="portfolio-name">Barbería</span>
+        <span class="portfolio-nivel">Modelo 2</span>
+        <span class="portfolio-arrow">→</span>
+      </a>
+      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">
+        <span class="portfolio-rubro">Tienda</span>
+        <span class="portfolio-name">RegaloUnico</span>
+        <span class="portfolio-nivel">Modelo 3</span>
+        <span class="portfolio-arrow">→</span>
+      </a>
+    </div>
+    <div class="portfolio-cta">
+      <p><strong>¿No ves tu rubro?</strong> Tenemos demos de estética, gastronomía, salud, comercios y más.</p>
+      <a href="https://nexo-landing.pages.dev/#portfolio" target="_blank" class="btn-primary">Ver portfolio completo →</a>
+    </div>
+  </section>
+
   <section id="cta">
     <h2 class="cta-title">¿Listo para tener la web que tu negocio necesita?</h2>
     <a href="#contacto" class="btn-dark">Empezar ahora →</a>
@@ -294,10 +360,11 @@
 
   <footer>
     <div class="footer-logo">Nexo<span>.</span></div>
-    <p>© 2025 Nexo Web. Todos los derechos reservados.</p>
+    <p>© 2026 Nexo Web · Parte de <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" style="color:var(--accent);text-decoration:none;">CDS</a></p>
     <div class="footer-links">
+      <a href="https://nexo-landing.pages.dev/" target="_blank">Portfolio</a>
       <a href="https://wa.me/5491124632544" target="_blank">WhatsApp</a>
-      <a href="https://wa.me/5491124632544" target="_blank">Contacto</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </footer>
 
