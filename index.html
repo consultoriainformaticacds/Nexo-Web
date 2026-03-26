@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexo Web — Diseño Web que Vende | Agencia Boutique</title>
-  <meta name="description" content="Creamos sitios web rápidos, modernos y efectivos para negocios que quieren crecer. Entrega en 7 días.">
+  <title>Nexo Web — Diseño Web Boutique | Agencia Digital</title>
+  <meta name="description" content="Creamos sitios web rápidos, modernos y efectivos. Entrega en 7 días. Parte del ecosistema CDS.">
   <link rel="icon" href="logo-cds.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,8 @@
     :root {
       --bg: #050505;
       --bg-card: rgba(20, 20, 20, 0.6);
-      --accent: #22c55e; /* Verde Nexo */
+      --accent: #22c55e;
+      --accent-cds: #00f2ff;
       --text: #ffffff;
       --text-dim: #a1a1aa;
       --glass-border: rgba(255, 255, 255, 0.1);
@@ -26,7 +27,6 @@
     body { background-color: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; }
     h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1; }
 
-    /* NAVEGACIÓN BOUTIQUE */
     nav { position: fixed; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); }
     .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.8rem; text-decoration: none; color: #fff; font-weight: 800; }
     .nav-logo span { color: var(--accent); }
@@ -34,85 +34,60 @@
     .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 500; font-size: 0.9rem; }
     .nav-links a:hover { color: #fff; }
     .nav-cta { background: #fff; color: #000; padding: 12px 24px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: var(--transition); }
-    .nav-cta:hover { transform: scale(1.05); background: var(--accent); }
 
-    /* HERO IMPACTANTE */
     #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 5% 80px; text-align: center; }
     .hero-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px; z-index: -1; }
     .hero-glow { position: absolute; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(34, 197, 94, 0.08), transparent 70%); z-index: -1; filter: blur(100px); }
-    
-    .hero-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent); margin-bottom: 20px; font-weight: 700; }
     .hero-title { font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 30px; font-weight: 800; }
-    .hero-title .muted { opacity: 0.3; }
     .hero-title .outline { -webkit-text-stroke: 1px #fff; color: transparent; }
-    .hero-desc { max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-dim); font-weight: 300; }
+    .hero-desc { max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-dim); }
 
     .btn-primary { padding: 18px 36px; background: var(--accent); color: #000; text-decoration: none; border-radius: 4px; font-weight: 800; display: inline-block; transition: var(--transition); }
     .btn-outline { padding: 18px 36px; border: 1px solid #fff; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 800; display: inline-block; margin-left: 15px; transition: var(--transition); }
-    .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(34, 197, 94, 0.3); }
 
-    /* TICKER ANIMADO */
     .ticker { background: var(--accent); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap; font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
     .ticker-track { display: inline-block; animation: ticker 30s linear infinite; }
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .ticker-item { margin-right: 40px; }
 
-    /* SERVICIOS Y PRECIOS */
     section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
     .section-label { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 15px; display: block; }
     .section-title { font-size: 3.5rem; margin-bottom: 60px; }
 
     .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    .servicio-card { 
-      background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border);
-      transition: var(--transition); position: relative; overflow: hidden;
-    }
+    .servicio-card { background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); transition: var(--transition); }
     .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-    .servicio-icon { font-size: 2.5rem; margin-bottom: 30px; display: block; }
     .servicio-price { font-size: 1.8rem; font-weight: 800; margin-top: 30px; font-family: 'Syne'; }
-    .servicio-price span { font-size: 0.8rem; opacity: 0.5; font-weight: 400; }
 
-    /* PROCESO */
-    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-    .paso-num { font-size: 3rem; font-weight: 800; color: rgba(255,255,255,0.05); font-family: 'Syne'; margin-bottom: -20px; }
-    .paso-title { font-size: 1.5rem; margin-bottom: 15px; color: var(--accent); }
+    /* SECCIÓN RESPALDO CDS */
+    .trust-block { background: linear-gradient(90deg, rgba(0, 242, 255, 0.05), transparent); border-left: 4px solid var(--accent-cds); padding: 40px; margin: 60px 0; border-radius: 0 8px 8px 0; }
+    .trust-block h4 { color: var(--accent-cds); margin-bottom: 10px; font-size: 1.2rem; }
+    .trust-block p { font-size: 0.95rem; color: var(--text-dim); max-width: 800px; }
+    .trust-link { color: var(--accent-cds); text-decoration: none; font-weight: 700; margin-top: 15px; display: inline-block; border-bottom: 1px solid var(--accent-cds); }
 
-    /* PORTFOLIO GRID */
+    /* PORTFOLIO */
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .portfolio-item { 
-      background: #111; padding: 40px; border: 1px solid var(--glass-border); text-decoration: none; 
-      transition: var(--transition); position: relative; overflow: hidden;
-    }
-    .portfolio-item:hover { border-color: #fff; background: #1a1a1a; }
+    .portfolio-item { background: #111; padding: 40px; border: 1px solid var(--glass-border); text-decoration: none; transition: var(--transition); }
+    .portfolio-item:hover { border-color: #fff; }
     .portfolio-rubro { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; }
     .portfolio-name { display: block; font-size: 1.4rem; font-weight: 700; color: #fff; margin: 10px 0; }
 
-    /* CONTACTO */
-    .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
     .contacto-form { background: #111; padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); display: grid; gap: 20px; }
     .form-field { display: flex; flex-direction: column; gap: 8px; }
-    .form-field label { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; }
-    .form-field input, .form-field select, .form-field textarea { 
-      background: #000; border: 1px solid var(--glass-border); padding: 15px; color: #fff; font-family: inherit; outline: none; transition: var(--transition);
-    }
-    .form-field input:focus { border-color: var(--accent); }
+    .form-field input, .form-field select, .form-field textarea { background: #000; border: 1px solid var(--glass-border); padding: 15px; color: #fff; font-family: inherit; outline: none; }
     .form-submit { background: var(--accent); color: #000; border: none; padding: 20px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); }
-    .form-submit:hover { letter-spacing: 2px; box-shadow: 0 0 30px var(--accent); }
 
-    /* FOOTER */
     footer { padding: 80px 5% 40px; border-top: 1px solid var(--glass-border); text-align: center; }
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: var(--transition); }
+    .footer-links { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; }
+    .footer-links a:hover { color: var(--accent); }
+
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 800px) {
-      .nav-links { display: none; }
-      .contacto-grid { grid-template-columns: 1fr; }
-      .btn-outline { margin-left: 0; margin-top: 10px; width: 100%; }
-      .btn-primary { width: 100%; }
-      .section-title { font-size: 2.5rem; }
-    }
+    @media (max-width: 800px) { .nav-links { display: none; } .btn-outline { margin-left: 0; margin-top: 10px; width: 100%; } }
   </style>
 </head>
 <body>
@@ -121,110 +96,72 @@
     <a class="nav-logo" href="#">Nexo<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="https://nexo-landing.pages.dev/">Ver Demos</a></li> <!-- LINK A CATÁLOGO -->
+      <li><a href="https://consultoriainformaticacds.pages.dev/">Seguridad IT</a></li> <!-- LINK A CDS -->
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta">Hablar con nosotros</a>
+    <a href="#contacto" class="nav-cta">Pedir Presupuesto</a>
   </nav>
 
   <main>
-    <!-- HERO -->
     <section id="hero">
       <div class="hero-grid"></div>
       <div class="hero-glow"></div>
       <div class="hero-content">
-        <p class="hero-tag">Diseño web profesional · CABA, Argentina</p>
-        <h1 class="hero-title">
-          Tu negocio<br/>
-          <span class="muted">merece una</span><br/>
-          <span class="outline">web real.</span>
-        </h1>
-        <p class="hero-desc">Creamos sitios web rápidos, modernos y efectivos para negocios que quieren crecer en internet. Sin complicaciones, con resultados reales.</p>
+        <p class="hero-tag">Diseño web boutique · CABA</p>
+        <h1 class="hero-title">Tu negocio<br/><span class="outline">web real.</span></h1>
+        <p class="hero-desc">Creamos sitios web rápidos y modernos. Parte del ecosistema tecnológico de CDS.</p>
         <div class="hero-actions">
-          <a href="#servicios" class="btn-primary">Ver servicios</a>
+          <a href="https://nexo-landing.pages.dev/" class="btn-primary">Explorar Demos</a>
           <a href="#contacto" class="btn-outline">Pedir presupuesto</a>
         </div>
       </div>
     </section>
 
-    <!-- TICKER -->
     <div class="ticker">
       <div class="ticker-track">
-        <span class="ticker-item">Diseño web profesional</span>
-        <span class="ticker-item">·</span>
-        <span class="ticker-item">Landing pages rápidas</span>
-        <span class="ticker-item">·</span>
-        <span class="ticker-item">Mantenimiento mensual</span>
-        <span class="ticker-item">·</span>
-        <span class="ticker-item">Entrega en 7 días</span>
-        <span class="ticker-item">·</span>
-        <span class="ticker-item">Soporte continuo</span>
-        <span class="ticker-item">·</span>
-        <span class="ticker-item">Diseño web profesional</span>
-        <span class="ticker-item">·</span>
-        <span class="ticker-item">Landing pages rápidas</span>
+        <span class="ticker-item">Diseño web profesional</span><span class="ticker-item">·</span>
+        <span class="ticker-item">Landing pages rápidas</span><span class="ticker-item">·</span>
+        <span class="ticker-item">Mantenimiento mensual</span><span class="ticker-item">·</span>
+        <span class="ticker-item">Soporte continuo</span><span class="ticker-item">·</span>
       </div>
     </div>
 
-    <!-- SERVICIOS -->
     <section id="servicios">
-      <span class="section-label">Lo que hacemos</span>
-      <h2 class="section-title">Nuestras Soluciones</h2>
+      <span class="section-label">Soluciones</span>
+      <h2 class="section-title">Lo que hacemos</h2>
+      
+      <!-- BLOQUE DE CONFIANZA CDS -->
+      <div class="trust-block">
+        <h4>🛡 Respaldo de Seguridad CDS</h4>
+        <p>Todas nuestras webs cuentan con el monitoreo y la infraestructura de <strong>Consultoría Informática CDS</strong>. No solo diseñamos, protegemos tu negocio contra ataques y vulnerabilidades.</p>
+        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" class="trust-link">Ver servicios de Ciberseguridad →</a>
+      </div>
+
       <div class="servicios-grid">
         <article class="servicio-card">
           <span class="servicio-icon">⚡</span>
           <h3>Landing Page</h3>
-          <p>Una página impactante diseñada para captar clientes y generar consultas. Lista en 5 días hábiles.</p>
-          <p class="servicio-price">U$S 100 <span>/ pago único</span></p>
+          <p>Enfocada 100% en captar clientes. Lista en 5 días.</p>
+          <p class="servicio-price">U$S 100</p>
         </article>
         <article class="servicio-card">
           <span class="servicio-icon">🖥</span>
-          <h3>Web Corporativa</h3>
-          <p>Sitio web multisección con diseño personalizado, optimización SEO y branding completo.</p>
-          <p class="servicio-price">U$S 250 <span>/ pago único</span></p>
-        </article>
-        <article class="servicio-card">
-          <span class="servicio-icon">🔄</span>
-          <h3>Mantenimiento</h3>
-          <p>Soporte técnico, actualizaciones y ajustes mensuales para que tu web nunca se detenga.</p>
-          <p class="servicio-price">U$S 50 <span>/ mes</span></p>
+          <h3>Web Completa</h3>
+          <p>Diseño personalizado con múltiples secciones y SEO.</p>
+          <p class="servicio-price">U$S 250</p>
         </article>
       </div>
     </section>
 
-    <!-- PROCESO -->
-    <section id="proceso">
-      <span class="section-label">Metodología</span>
-      <h2 class="section-title">El proceso Nexo</h2>
-      <div class="proceso-grid">
-        <div class="proceso-step">
-          <div class="paso-num">01</div>
-          <h3 class="paso-title">Consultoría</h3>
-          <p>Entendemos tu negocio y tus objetivos de venta antes de tocar una sola línea de código.</p>
-        </div>
-        <div class="proceso-step">
-          <div class="paso-num">02</div>
-          <h3 class="paso-title">Diseño</h3>
-          <p>Creamos una interfaz moderna y funcional que represente la autoridad de tu marca.</p>
-        </div>
-        <div class="proceso-step">
-          <div class="paso-num">03</div>
-          <h3 class="paso-title">Desarrollo</h3>
-          <p>Programamos tu sitio con las mejores prácticas de velocidad y seguridad digital.</p>
-        </div>
-        <div class="proceso-step">
-          <div class="paso-num">04</div>
-          <h3 class="paso-title">Lanzamiento</h3>
-          <p>Publicamos tu web y te entregamos las llaves de tu nueva sucursal digital 24/7.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO -->
     <section id="portfolio">
-      <span class="section-label">Showcase</span>
-      <h2 class="section-title">Trabajos Recientes</h2>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px;">
+        <div>
+          <span class="section-label">Showcase</span>
+          <h2 class="section-title" style="margin:0">Modelos Reales</h2>
+        </div>
+        <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.9rem; border-bottom: 1px solid var(--accent); padding-bottom: 5px;">Ver catálogo completo →</a>
+      </div>
       <div class="portfolio-grid">
         <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
           <span class="portfolio-rubro">Estética</span>
@@ -234,53 +171,24 @@
           <span class="portfolio-rubro">Gastronomía</span>
           <span class="portfolio-name">Raíces Resto</span>
         </a>
-        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
-          <span class="portfolio-rubro">Legales</span>
-          <span class="portfolio-name">Fernández & Asoc.</span>
-        </a>
-      </div>
-      <div style="text-align: center; margin-top: 50px;">
-        <a href="https://nexo-landing.pages.dev/" target="_blank" class="btn-outline" style="margin:0">Ver portfolio completo →</a>
       </div>
     </section>
 
-    <!-- CONTACTO -->
     <section id="contacto">
-      <div class="contacto-grid">
-        <div class="contacto-info">
-          <span class="section-label" style="text-align: left;">Contacto</span>
-          <h2 class="section-title" style="text-align: left; font-size: 2.5rem;">Hagamos algo grande.</h2>
-          <p style="color: var(--text-dim); margin-bottom: 30px;">Pedí tu presupuesto sin compromiso. Respondemos en menos de 24 horas.</p>
-          <ul style="list-style: none;">
-            <li style="margin-bottom: 20px;"><strong>WhatsApp:</strong><br/>+54 9 11 2463-2544</li>
-            <li><strong>Email:</strong><br/>nexo.web@cds.com</li>
-          </ul>
-        </div>
-        
-        <form class="contacto-form" id="nexoForm" action="https://formspree.io/f/maqpkdog" method="POST">
+      <div class="contacto-form" id="nexoForm">
+        <h2 style="margin-bottom: 30px;">Hagamos tu web</h2>
+        <form action="https://formspree.io/f/maqpkdog" method="POST">
+          <div class="form-field"><label>Nombre</label><input type="text" name="name" required /></div>
+          <div class="form-field"><label>Email</label><input type="email" name="email" required /></div>
           <div class="form-field">
-            <label>Nombre</label>
-            <input type="text" name="name" required placeholder="Tu nombre" />
-          </div>
-          <div class="form-field">
-            <label>Email</label>
-            <input type="email" name="email" required placeholder="tu@email.com" />
-          </div>
-          <div class="form-field">
-            <label>Tipo de Proyecto</label>
+            <label>Proyecto</label>
             <select name="type" required>
-              <option value="" disabled selected>Seleccioná una opción</option>
-              <option value="Landing Page">Landing Page Rápida</option>
-              <option value="Web Completa">Sitio Web Completo</option>
-              <option value="Mantenimiento">Mantenimiento</option>
+              <option value="Landing">Landing Page</option>
+              <option value="Web Completa">Web Completa</option>
             </select>
           </div>
-          <div class="form-field">
-            <label>Mensaje</label>
-            <textarea name="message" rows="4" required placeholder="¿Qué necesitás resolver?"></textarea>
-          </div>
-          <button type="submit" class="form-submit" id="nx-btn">Enviar consulta →</button>
-          <p id="nx-status" style="margin-top: 15px; text-align: center; font-weight: 700;"></p>
+          <div class="form-field"><label>Mensaje</label><textarea name="message" rows="4" required></textarea></div>
+          <button type="submit" class="form-submit">Enviar consulta →</button>
         </form>
       </div>
     </section>
@@ -288,7 +196,12 @@
 
   <footer>
     <div class="nav-logo">Nexo<span>.</span></div>
-    <p style="margin: 20px 0; font-size: 0.8rem; opacity: 0.5;">© 2026 Nexo Web · Parte del ecosistema de Consultoría Informática CDS</p>
+    <div class="footer-links">
+      <a href="https://consultoriainformaticacds.pages.dev/" target="_blank">Consultoría CDS</a>
+      <a href="https://nexo-landing.pages.dev/" target="_blank">Catálogo de Demos</a>
+      <a href="https://wa.me/5491124632544" target="_blank">WhatsApp</a>
+    </div>
+    <p style="margin-top: 30px; font-size: 0.75rem; opacity: 0.5;">© 2026 Nexo Web · CABA, Argentina</p>
   </footer>
 
   <a href="https://wa.me/5491124632544" id="wa-float" target="_blank">
@@ -297,50 +210,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // REVEAL ANIMATION
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('section, .servicio-card, .proceso-step, .portfolio-item').forEach(el => {
-            el.classList.add('reveal');
-            observer.observe(el);
-        });
-
-        // FORMSPREE AJAX
-        const form = document.getElementById('nexoForm');
-        const status = document.getElementById('nx-status');
-        const btn = document.getElementById('nx-btn');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const data = new FormData(form);
-            btn.innerText = "ENVIANDO...";
-            btn.disabled = true;
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
-                if (response.ok) {
-                    status.innerText = "SISTEMA: Consulta enviada con éxito.";
-                    status.style.color = "var(--accent)";
-                    form.reset();
-                } else {
-                    status.innerText = "ERROR: Reintente o contacte por WhatsApp.";
-                    status.style.color = "#ff4444";
-                }
-            } catch (error) {
-                status.innerText = "ERROR DE CONEXIÓN.";
-            } finally {
-                btn.innerText = "ENVIAR CONSULTA →";
-                btn.disabled = false;
-            }
-        });
+        document.querySelectorAll('section, article, .portfolio-item, .trust-block').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
     });
   </script>
 </body>
