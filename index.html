@@ -4,328 +4,139 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexo Web — Diseño Web Boutique | Agencia Digital</title>
-  <meta name="description" content="Creamos sitios web rápidos, modernos y efectivos. Entrega en 7 días. Parte del ecosistema tecnológico de CDS.">
   <link rel="icon" href="logo-cds.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
   <style>
-    :root {
-      --bg: #050505;
-      --bg-card: rgba(20, 20, 20, 0.6);
-      --accent: #22c55e; /* Verde Nexo */
-      --accent-cds: #00f2ff; /* Cyan CDS */
-      --text: #ffffff;
-      --text-dim: #a1a1aa;
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
+    :root { --bg: #050505; --bg-card: rgba(20, 20, 20, 0.6); --accent: #22c55e; --accent-cds: #00f2ff; --text: #ffffff; --text-dim: #a1a1aa; --glass-border: rgba(255, 255, 255, 0.1); --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; color-scheme: dark; }
     body { background-color: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; line-height: 1.6; }
     h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1; }
-
-    /* NAVEGACIÓN */
     nav { position: fixed; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); transition: var(--transition); }
-    nav.scrolled { padding: 15px 5%; background: rgba(5, 5, 5, 0.9); }
     .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.8rem; text-decoration: none; color: #fff; font-weight: 800; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; list-style: none; gap: 30px; }
     .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 500; font-size: 0.9rem; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta { background: #fff; color: #000; padding: 12px 24px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: var(--transition); }
-    .nav-cta:hover { background: var(--accent); }
-
-    /* HERO */
+    .nav-cta { background: #fff; color: #000; padding: 12px 24px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
     #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 5% 80px; text-align: center; }
-    .hero-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px; z-index: -1; }
-    .hero-glow { position: absolute; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(34, 197, 94, 0.08), transparent 70%); z-index: -1; filter: blur(100px); }
-    
-    .hero-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent); margin-bottom: 20px; font-weight: 700; }
     .hero-title { font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 30px; font-weight: 800; }
     .hero-title .outline { -webkit-text-stroke: 1px #fff; color: transparent; }
-    .hero-desc { max-width: 650px; margin: 0 auto 40px; font-size: 1.25rem; color: var(--text-dim); font-weight: 300; }
-
-    /* TICKER */
     .ticker { background: var(--accent); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap; font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; border-top: 1px solid #000; border-bottom: 1px solid #000; }
     .ticker-track { display: inline-block; animation: ticker 30s linear infinite; }
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .ticker-item { margin-right: 40px; }
-
-    /* SECCIONES */
     section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
     .section-label { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 15px; display: block; }
-    .section-title { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 60px; }
-
-    /* SERVICIOS */
+    .section-title { font-size: 3.5rem; margin-bottom: 60px; }
     .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    .servicio-card { 
-      background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border);
-      transition: var(--transition); position: relative; overflow: hidden;
-    }
+    .servicio-card { background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); transition: var(--transition); }
     .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-    .servicio-price { font-size: 2rem; font-weight: 800; margin-top: 30px; font-family: 'Syne'; color: #fff; }
-    .servicio-price span { font-size: 0.9rem; opacity: 0.5; font-weight: 400; }
-
-    /* BLOQUE DE CONFIANZA CDS */
-    .trust-block { 
-      background: linear-gradient(90deg, rgba(0, 242, 255, 0.05), transparent); 
-      border-left: 4px solid var(--accent-cds); padding: 50px; margin: 80px 0; border-radius: 0 12px 12px 0;
-      display: flex; flex-direction: column; gap: 20px;
-    }
-    .trust-block h4 { color: var(--accent-cds); font-size: 1.4rem; font-family: 'Syne'; }
-    .trust-block p { max-width: 800px; color: var(--text-dim); font-size: 1.1rem; }
-    .trust-link { color: var(--accent-cds); text-decoration: none; font-weight: 700; border-bottom: 1px solid var(--accent-cds); width: fit-content; transition: 0.3s; }
-    .trust-link:hover { opacity: 0.7; letter-spacing: 1px; }
-
-    /* TABLA COMPARATIVA */
+    .servicio-price { font-size: 1.8rem; font-weight: 800; margin-top: 30px; font-family: 'Syne'; }
     .table-container { overflow-x: auto; margin-top: 80px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid var(--glass-border); padding: 40px; }
     table { width: 100%; border-collapse: collapse; min-width: 700px; }
     th, td { padding: 20px; text-align: left; border-bottom: 1px solid var(--glass-border); font-size: 0.95rem; }
-    th { color: var(--accent); font-family: 'Syne'; text-transform: uppercase; letter-spacing: 1px; }
-    .check { color: var(--accent); font-weight: bold; font-size: 1.2rem; }
-
-    /* PORTFOLIO */
+    .check { color: var(--accent); font-weight: bold; }
+    .trust-block { background: linear-gradient(90deg, rgba(0, 242, 255, 0.05), transparent); border-left: 4px solid var(--accent-cds); padding: 50px; margin: 80px 0; border-radius: 0 12px 12px 0; }
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .portfolio-item { 
-      background: #111; padding: 40px; border: 1px solid var(--glass-border); text-decoration: none; 
-      transition: var(--transition); position: relative;
-    }
-    .portfolio-item:hover { border-color: #fff; background: #181818; }
-    .portfolio-rubro { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; letter-spacing: 2px; }
-    .portfolio-name { display: block; font-size: 1.5rem; font-weight: 700; color: #fff; margin: 10px 0; }
-
-    /* CONTACTO */
-    .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
+    .portfolio-item { background: #111; padding: 40px; border: 1px solid var(--glass-border); text-decoration: none; transition: var(--transition); }
+    .portfolio-item:hover { border-color: #fff; }
+    .portfolio-rubro { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; }
+    .portfolio-name { display: block; font-size: 1.4rem; font-weight: 700; color: #fff; margin: 10px 0; }
     .contacto-form { background: #111; padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); display: grid; gap: 25px; }
     .form-field { display: flex; flex-direction: column; gap: 10px; }
     .form-field label { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
-    .form-field input, .form-field select, .form-field textarea { 
-      background: #000; border: 1px solid var(--glass-border); padding: 18px; color: #fff; font-family: inherit; outline: none; transition: 0.3s;
-    }
-    .form-field input:focus { border-color: var(--accent); }
-    .form-submit { background: var(--accent); color: #000; border: none; padding: 22px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); letter-spacing: 1px; }
-    .form-submit:hover { box-shadow: 0 0 30px var(--accent); transform: scale(1.02); }
-
-    /* FOOTER */
+    .form-field input, .form-field select, .form-field textarea { background: #000; border: 1px solid var(--glass-border); padding: 18px; color: #fff; font-family: inherit; outline: none; }
+    .form-submit { background: var(--accent); color: #000; border: none; padding: 22px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); }
     footer { padding: 80px 5% 40px; border-top: 1px solid var(--glass-border); text-align: center; }
-    .footer-links { display: flex; justify-content: center; gap: 30px; margin: 30px 0; }
-    .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
-    .footer-links a:hover { color: var(--accent); }
-
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: var(--transition); }
-    #wa-float:hover { transform: scale(1.1) rotate(10deg); }
-
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: var(--transition); animation: pulse 2s infinite; text-decoration: none; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
     .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 800px) {
-      .nav-links { display: none; }
-      .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
-      .trust-block { padding: 30px; }
-    }
+    @media (max-width: 800px) { .nav-links { display: none; } }
   </style>
 </head>
 <body>
-
   <nav id="navbar">
     <a class="nav-logo" href="#">Nexo<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="#servicios">Servicios</a></li>
       <li><a href="https://nexo-landing.pages.dev/">Ver Demos</a></li>
       <li><a href="https://consultoriainformaticacds.pages.dev/">Seguridad IT</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Pedir Presupuesto</a>
   </nav>
-
   <main>
-    <!-- HERO -->
     <section id="hero">
-      <div class="hero-grid"></div>
-      <div class="hero-glow"></div>
       <div class="hero-content">
-        <p class="hero-tag">Agencia de Diseño Boutique · CABA</p>
+        <p class="section-label" style="text-align: center;">Agencia Digital Boutique</p>
         <h1 class="hero-title">Tu negocio<br/><span class="outline">web real.</span></h1>
-        <p class="hero-desc">Creamos sitios web de alto impacto que convierten visitas en clientes. Parte del ecosistema tecnológico de CDS.</p>
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-          <a href="https://nexo-landing.pages.dev/" class="nav-cta" style="padding: 18px 35px; font-size: 1rem;">Explorar Catálogo de Demos</a>
-        </div>
+        <p style="max-width: 600px; margin: 0 auto; color: var(--text-dim);">Diseño de alto impacto respaldado por la seguridad de CDS.</p>
       </div>
     </section>
-
-    <!-- TICKER -->
-    <div class="ticker">
-      <div class="ticker-track">
-        <span class="ticker-item">Diseño web profesional</span><span class="ticker-item">·</span>
-        <span class="ticker-item">Landing pages rápidas</span><span class="ticker-item">·</span>
-        <span class="ticker-item">Mantenimiento mensual</span><span class="ticker-item">·</span>
-        <span class="ticker-item">Soporte continuo</span><span class="ticker-item">·</span>
-        <span class="ticker-item">Entrega en 7 días</span><span class="ticker-item">·</span>
-        <span class="ticker-item">Diseño web profesional</span><span class="ticker-item">·</span>
-        <span class="ticker-item">Landing pages rápidas</span>
-      </div>
-    </div>
-
-    <!-- SERVICIOS -->
+    <div class="ticker"><div class="ticker-track"><span class="ticker-item">Diseño web profesional</span><span class="ticker-item">·</span><span class="ticker-item">Landing pages rápidas</span><span class="ticker-item">·</span><span class="ticker-item">Mantenimiento mensual</span><span class="ticker-item">·</span><span class="ticker-item">Soporte continuo</span><span class="ticker-item">·</span></div></div>
     <section id="servicios">
-      <span class="section-label">Soluciones</span>
       <h2 class="section-title">Nuestros Modelos</h2>
-      
       <div class="servicios-grid">
-        <article class="servicio-card">
-          <span class="servicio-icon">⚡</span>
-          <h3>Landing Page</h3>
-          <p>Enfocada 100% en captar clientes y generar consultas rápidas. Ideal para profesionales.</p>
-          <p class="servicio-price">U$S 100 <span>/ pago único</span></p>
-        </article>
-        <article class="servicio-card">
-          <span class="servicio-icon">🖥</span>
-          <h3>Web Corporativa</h3>
-          <p>Sitio web multisección con diseño personalizado, optimización SEO y branding completo.</p>
-          <p class="servicio-price">U$S 250 <span>/ pago único</span></p>
-        </article>
-        <article class="servicio-card">
-          <span class="servicio-icon">💎</span>
-          <h3>Web Premium</h3>
-          <p>Estrategia total, animaciones de lujo, FAQ interactivo y máxima autoridad digital.</p>
-          <p class="servicio-price">U$S 350+ <span>/ pago único</span></p>
-        </article>
+        <article class="servicio-card"><h3>Landing Page</h3><p>U$S 100</p></article>
+        <article class="servicio-card"><h3>Web Completa</h3><p>U$S 250</p></article>
       </div>
-
-      <!-- TABLA COMPARATIVA INTEGRADA -->
       <div class="table-container">
-        <h3 style="margin-bottom: 30px; font-family: 'Syne';">Comparativa Detallada</h3>
         <table>
-          <thead>
-            <tr><th>Característica</th><th>Landing</th><th>Standard</th><th>Premium</th></tr>
-          </thead>
+          <thead><tr><th>Característica</th><th>Landing</th><th>Standard</th></tr></thead>
           <tbody>
-            <tr><td>Entrega estimada</td><td>5 días</td><td>7 días</td><td>10 días</td></tr>
-            <tr><td>Rondas de cambios</td><td>1</td><td>2</td><td>3+</td></tr>
-            <tr><td>Sección Nosotros</td><td>—</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-            <tr><td>Galería de fotos</td><td>—</td><td>—</td><td><span class="check">✓</span></td></tr>
-            <tr><td>FAQ Interactivo</td><td>—</td><td>—</td><td><span class="check">✓</span></td></tr>
-            <tr><td>Feed Instagram</td><td>—</td><td>—</td><td><span class="check">✓</span></td></tr>
-            <tr><td>Hosting e HTTPS</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-            <tr><td>Soporte Post-entrega</td><td>7 días</td><td>15 días</td><td>30 días</td></tr>
+            <tr><td>Entrega</td><td>5 días</td><td>7 días</td></tr>
+            <tr><td>Hosting</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
           </tbody>
         </table>
       </div>
-
-      <!-- BLOQUE DE CONFIANZA CDS -->
       <div class="trust-block">
         <h4>🛡 Respaldo de Seguridad CDS</h4>
-        <p>Todas nuestras webs cuentan con el monitoreo y la infraestructura de <strong>Consultoría Informática CDS</strong>. No solo diseñamos, protegemos tu negocio contra ataques y vulnerabilidades digitales.</p>
-        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" class="trust-link">Ver servicios de Ciberseguridad →</a>
+        <p>Todas nuestras webs cuentan con el monitoreo de CDS.</p>
+        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" style="color:var(--accent-cds); text-decoration:none; font-weight:700;">Ver servicios de Ciberseguridad →</a>
       </div>
     </section>
-
-    <!-- PORTFOLIO -->
     <section id="portfolio">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px;">
-        <div>
-          <span class="section-label">Showcase</span>
-          <h2 class="section-title" style="margin:0">Modelos Reales</h2>
-        </div>
-        <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.9rem; border-bottom: 1px solid var(--accent); padding-bottom: 5px;">Ver catálogo completo →</a>
+        <h2 class="section-title" style="margin:0">Modelos Reales</h2>
+        <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.9rem; border-bottom: 1px solid var(--accent);">Ver catálogo completo →</a>
       </div>
       <div class="portfolio-grid">
-        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
-          <span class="portfolio-rubro">Estética</span>
-          <span class="portfolio-name">Lumière Studio</span>
-        </a>
-        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
-          <span class="portfolio-rubro">Gastronomía</span>
-          <span class="portfolio-name">Raíces Resto</span>
-        </a>
-        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
-          <span class="portfolio-rubro">Legales</span>
-          <span class="portfolio-name">Fernández & Asoc.</span>
-        </a>
+        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank"><span class="portfolio-rubro">Estética</span><span class="portfolio-name">Lumière Studio</span></a>
+        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank"><span class="portfolio-rubro">Gastronomía</span><span class="portfolio-name">Raíces Resto</span></a>
       </div>
     </section>
-
-    <!-- CONTACTO -->
     <section id="contacto">
-      <div class="contacto-grid">
-        <div class="contacto-info">
-          <span class="section-label" style="text-align: left;">Hablemos</span>
-          <h2 class="section-title" style="text-align: left; font-size: 2.5rem;">Hagamos algo grande.</h2>
-          <p style="color: var(--text-dim); margin-bottom: 30px;">Pedí tu presupuesto sin compromiso. Respondemos en menos de 24 horas hábiles.</p>
-          <ul style="list-style: none;">
-            <li style="margin-bottom: 20px;"><strong>WhatsApp:</strong><br/>+54 9 11 2463-2544</li>
-            <li><strong>Email:</strong><br/>consultoriainformaticacds@gmail.com</li>
-          </ul>
-        </div>
-        
-        <form class="contacto-form" id="nexoForm" action="https://formspree.io/f/maqpkdog" method="POST">
-          <div class="form-field"><label>Nombre</label><input type="text" name="name" required placeholder="Tu nombre" /></div>
-          <div class="form-field"><label>Email</label><input type="email" name="email" required placeholder="tu@empresa.com" /></div>
-          <div class="form-field">
-            <label>Tipo de Proyecto</label>
-            <select name="type" required>
-              <option value="" disabled selected>Seleccioná una opción</option>
-              <option value="Landing Page">Landing Page</option>
-              <option value="Web Completa">Web Completa</option>
-              <option value="Web Premium">Web Premium</option>
-              <option value="Mantenimiento">Mantenimiento</option>
-            </select>
-          </div>
-          <div class="form-field"><label>Mensaje</label><textarea name="message" rows="4" required placeholder="¿En qué podemos ayudarte?"></textarea></div>
+      <div class="contacto-form">
+        <h2 style="margin-bottom: 30px;">Hagamos tu web</h2>
+        <form id="nexoForm" action="https://formspree.io/f/xpqynaqq" method="POST">
+          <div class="form-field"><label>Nombre</label><input type="text" name="nombre" required /></div>
+          <div class="form-field"><label>Email</label><input type="email" name="email" required /></div>
+          <div class="form-field"><label>Mensaje</label><textarea name="mensaje" rows="4" required></textarea></div>
           <button type="submit" class="form-submit" id="nx-btn">Enviar consulta →</button>
           <p id="nx-status" style="margin-top: 15px; text-align: center; font-weight: 700;"></p>
         </form>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="nav-logo">Nexo<span>.</span></div>
-    <div class="footer-links">
-      <a href="https://consultoriainformaticacds.pages.dev/" target="_blank">Consultoría CDS</a>
-      <a href="https://nexo-landing.pages.dev/" target="_blank">Catálogo de Demos</a>
-      <a href="https://wa.me/5491124632544" target="_blank">WhatsApp</a>
-    </div>
-    <p style="margin-top: 30px; font-size: 0.75rem; opacity: 0.5;">© 2026 Nexo Web · Parte del ecosistema de Consultoría Informática CDS</p>
-  </footer>
-
-  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank">
-    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
-
+  <footer><p>© 2026 Nexo Web · Parte de CDS</p></footer>
+  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank"><svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // NAV SCROLL
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-        });
-
-        // REVEAL ANIMATION
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('section, article, .trust-block').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
-
-        // AJAX FORM
-        const form = document.getElementById('nexoForm');
-        const status = document.getElementById('nx-status');
+      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+      document.querySelectorAll('section, article').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
+      const form = document.getElementById('nexoForm');
+      const status = document.getElementById('nx-status');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
         const btn = document.getElementById('nx-btn');
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            btn.innerText = "ENVIANDO...";
-            btn.disabled = true;
-            try {
-                const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-                if (response.ok) { status.innerText = "SISTEMA: Consulta recibida con éxito."; status.style.color = "var(--accent)"; form.reset(); }
-                else { status.innerText = "ERROR: Reintente."; status.style.color = "#ff4444"; }
-            } catch (error) { status.innerText = "ERROR DE CONEXIÓN."; }
-            finally { btn.innerText = "ENVIAR CONSULTA →"; btn.disabled = false; }
-        });
+        btn.innerText = "ENVIANDO...";
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        if (response.ok) { status.innerText = "¡Consulta recibida!"; status.style.color = "var(--accent)"; form.reset(); }
+        else { status.innerText = "Error. Intenta por WhatsApp."; }
+        btn.innerText = "Enviar consulta →";
+      });
     });
   </script>
 </body>
