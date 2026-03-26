@@ -1,14 +1,119 @@
-<!-- Last Updated: 2026-03-24 -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexo Web — Diseño Web Profesional</title>
+  <title>Nexo Web — Diseño Web que Vende | Agencia Boutique</title>
+  <meta name="description" content="Creamos sitios web rápidos, modernos y efectivos para negocios que quieren crecer. Entrega en 7 días.">
+  <link rel="icon" href="logo-cds.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-card: rgba(20, 20, 20, 0.6);
+      --accent: #22c55e; /* Verde Nexo */
+      --text: #ffffff;
+      --text-dim: #a1a1aa;
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; color-scheme: dark; }
+    body { background-color: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1; }
+
+    /* NAVEGACIÓN BOUTIQUE */
+    nav { position: fixed; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.8rem; text-decoration: none; color: #fff; font-weight: 800; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; list-style: none; gap: 30px; }
+    .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 500; font-size: 0.9rem; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: #fff; color: #000; padding: 12px 24px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: var(--transition); }
+    .nav-cta:hover { transform: scale(1.05); background: var(--accent); }
+
+    /* HERO IMPACTANTE */
+    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 5% 80px; text-align: center; }
+    .hero-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px; z-index: -1; }
+    .hero-glow { position: absolute; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(34, 197, 94, 0.08), transparent 70%); z-index: -1; filter: blur(100px); }
+    
+    .hero-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent); margin-bottom: 20px; font-weight: 700; }
+    .hero-title { font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 30px; font-weight: 800; }
+    .hero-title .muted { opacity: 0.3; }
+    .hero-title .outline { -webkit-text-stroke: 1px #fff; color: transparent; }
+    .hero-desc { max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-dim); font-weight: 300; }
+
+    .btn-primary { padding: 18px 36px; background: var(--accent); color: #000; text-decoration: none; border-radius: 4px; font-weight: 800; display: inline-block; transition: var(--transition); }
+    .btn-outline { padding: 18px 36px; border: 1px solid #fff; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 800; display: inline-block; margin-left: 15px; transition: var(--transition); }
+    .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(34, 197, 94, 0.3); }
+
+    /* TICKER ANIMADO */
+    .ticker { background: var(--accent); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap; font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
+    .ticker-track { display: inline-block; animation: ticker 30s linear infinite; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker-item { margin-right: 40px; }
+
+    /* SERVICIOS Y PRECIOS */
+    section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
+    .section-label { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 15px; display: block; }
+    .section-title { font-size: 3.5rem; margin-bottom: 60px; }
+
+    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .servicio-card { 
+      background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border);
+      transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+    .servicio-icon { font-size: 2.5rem; margin-bottom: 30px; display: block; }
+    .servicio-price { font-size: 1.8rem; font-weight: 800; margin-top: 30px; font-family: 'Syne'; }
+    .servicio-price span { font-size: 0.8rem; opacity: 0.5; font-weight: 400; }
+
+    /* PROCESO */
+    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .paso-num { font-size: 3rem; font-weight: 800; color: rgba(255,255,255,0.05); font-family: 'Syne'; margin-bottom: -20px; }
+    .paso-title { font-size: 1.5rem; margin-bottom: 15px; color: var(--accent); }
+
+    /* PORTFOLIO GRID */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .portfolio-item { 
+      background: #111; padding: 40px; border: 1px solid var(--glass-border); text-decoration: none; 
+      transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .portfolio-item:hover { border-color: #fff; background: #1a1a1a; }
+    .portfolio-rubro { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; }
+    .portfolio-name { display: block; font-size: 1.4rem; font-weight: 700; color: #fff; margin: 10px 0; }
+
+    /* CONTACTO */
+    .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
+    .contacto-form { background: #111; padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); display: grid; gap: 20px; }
+    .form-field { display: flex; flex-direction: column; gap: 8px; }
+    .form-field label { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; }
+    .form-field input, .form-field select, .form-field textarea { 
+      background: #000; border: 1px solid var(--glass-border); padding: 15px; color: #fff; font-family: inherit; outline: none; transition: var(--transition);
+    }
+    .form-field input:focus { border-color: var(--accent); }
+    .form-submit { background: var(--accent); color: #000; border: none; padding: 20px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); }
+    .form-submit:hover { letter-spacing: 2px; box-shadow: 0 0 30px var(--accent); }
+
+    /* FOOTER */
+    footer { padding: 80px 5% 40px; border-top: 1px solid var(--glass-border); text-align: center; }
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: var(--transition); }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .contacto-grid { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 10px; width: 100%; }
+      .btn-primary { width: 100%; }
+      .section-title { font-size: 2.5rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -16,223 +121,227 @@
     <a class="nav-logo" href="#">Nexo<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Hablar con nosotros</a>
   </nav>
 
-  <section id="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <p class="hero-tag">Diseño web profesional · CABA, Argentina</p>
-      <h1 class="hero-title">
-        Tu negocio<br/>
-        <span class="muted">merece una</span><br/>
-        <span class="outline">web real.</span>
-      </h1>
-      <p class="hero-desc">Creamos sitios web rápidos, modernos y efectivos para negocios que quieren crecer en internet. Sin complicaciones, con resultados.</p>
-      <div class="hero-actions">
-        <a href="#servicios" class="btn-primary">Ver servicios</a>
-        <a href="#contacto" class="btn-outline">Pedir presupuesto</a>
+  <main>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-content">
+        <p class="hero-tag">Diseño web profesional · CABA, Argentina</p>
+        <h1 class="hero-title">
+          Tu negocio<br/>
+          <span class="muted">merece una</span><br/>
+          <span class="outline">web real.</span>
+        </h1>
+        <p class="hero-desc">Creamos sitios web rápidos, modernos y efectivos para negocios que quieren crecer en internet. Sin complicaciones, con resultados reales.</p>
+        <div class="hero-actions">
+          <a href="#servicios" class="btn-primary">Ver servicios</a>
+          <a href="#contacto" class="btn-outline">Pedir presupuesto</a>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div><div class="stat-num">7</div><div class="stat-label">días de entrega</div></div>
-        <div><div class="stat-num">100%</div><div class="stat-label">clientes satisfechos</div></div>
-        <div><div class="stat-num">24h</div><div class="stat-label">tiempo de respuesta</div></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="ticker">
-    <div class="ticker-track">
-      <span class="ticker-item">Diseño web profesional</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Landing pages rápidas</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Mantenimiento mensual</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Entrega en 7 días</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Soporte continuo</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Diseño web profesional</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Landing pages rápidas</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Mantenimiento mensual</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Entrega en 7 días</span><span class="ticker-item">·</span>
-      <span class="ticker-item">Soporte continuo</span><span class="ticker-item">·</span>
-    </div>
-  </div>
-
-  <section id="servicios">
-    <div class="section-header">
-      <div>
-        <p class="section-label">Lo que hacemos</p>
-        <h2 class="section-title" style="margin-bottom:0">Nuestros servicios</h2>
-      </div>
-      <a href="#contacto" class="section-link">Pedir presupuesto →</a>
-    </div>
-    <div class="servicios-grid">
-      <div class="servicio-card">
-        <p class="servicio-num">01</p>
-        <span class="servicio-icon">⚡</span>
-        <h3 class="servicio-name">Landing Page Rápida</h3>
-        <p class="servicio-desc">Una página impactante para presentar tu negocio, captar clientes y generar consultas. Lista en 5 días hábiles.</p>
-        <p class="servicio-price">$150.000 <span class="ars">ARS</span><span class="usd">· U$S 100</span></p>
-      </div>
-      <div class="servicio-card">
-        <p class="servicio-num">02</p>
-        <span class="servicio-icon">🖥</span>
-        <h3 class="servicio-name">Diseño Web Completo</h3>
-        <p class="servicio-desc">Sitio web de múltiples secciones con diseño personalizado, formulario de contacto y optimización básica.</p>
-        <p class="servicio-price">$360.000 <span class="ars">ARS</span><span class="usd">· U$S 250</span></p>
-      </div>
-      <div class="servicio-card">
-        <p class="servicio-num">03</p>
-        <span class="servicio-icon">🔄</span>
-        <h3 class="servicio-name">Mantenimiento Mensual</h3>
-        <p class="servicio-desc">Actualizaciones de contenido, soporte técnico y ajustes para que tu web esté siempre perfecta.</p>
-        <p class="servicio-price">$72.000 <span class="ars">ARS</span><span class="usd">· U$S 50 / mes</span></p>
+    <!-- TICKER -->
+    <div class="ticker">
+      <div class="ticker-track">
+        <span class="ticker-item">Diseño web profesional</span>
+        <span class="ticker-item">·</span>
+        <span class="ticker-item">Landing pages rápidas</span>
+        <span class="ticker-item">·</span>
+        <span class="ticker-item">Mantenimiento mensual</span>
+        <span class="ticker-item">·</span>
+        <span class="ticker-item">Entrega en 7 días</span>
+        <span class="ticker-item">·</span>
+        <span class="ticker-item">Soporte continuo</span>
+        <span class="ticker-item">·</span>
+        <span class="ticker-item">Diseño web profesional</span>
+        <span class="ticker-item">·</span>
+        <span class="ticker-item">Landing pages rápidas</span>
       </div>
     </div>
-    <p class="precio-nota">* Precios sujetos al tipo de cambio del día del pago. Base: U$S 1 = $1.435 ARS.</p>
-  </section>
 
-  <section id="proceso">
-    <p class="section-label">Cómo trabajamos</p>
-    <h2 class="section-title">El proceso Nexo</h2>
-    <div class="proceso-grid">
-      <div class="proceso-step"><div class="paso-num">01</div><h3 class="paso-title">Consultamos</h3><p class="paso-desc">Hablamos para entender tu negocio, tus clientes y tus objetivos. Sin formularios complicados.</p></div>
-      <div class="proceso-step"><div class="paso-num">02</div><h3 class="paso-title">Diseñamos</h3><p class="paso-desc">Creamos el diseño a medida de tu marca. Te mostramos el resultado antes de avanzar.</p></div>
-      <div class="proceso-step"><div class="paso-num">03</div><h3 class="paso-title">Revisamos</h3><p class="paso-desc">Ajustamos lo que necesites. Incluye hasta 2 rondas de cambios sin costo adicional.</p></div>
-      <div class="proceso-step"><div class="paso-num">04</div><h3 class="paso-title">Publicamos</h3><p class="paso-desc">Tu web queda online con dominio propio. Vos te enfocás en tu negocio, nosotros en la tech.</p></div>
-    </div>
-  </section>
-
-  <section id="porque">
-    <p class="section-label">Nuestra diferencia</p>
-    <h2 class="section-title">¿Por qué elegir Nexo?</h2>
-    <div class="porque-stats">
-      <div class="porque-stat"><div class="porque-stat-num">7</div><div class="porque-stat-label">días promedio de entrega</div></div>
-      <div class="porque-stat"><div class="porque-stat-num">100%</div><div class="porque-stat-label">clientes satisfechos</div></div>
-      <div class="porque-stat"><div class="porque-stat-num">24h</div><div class="porque-stat-label">tiempo de respuesta</div></div>
-      <div class="porque-stat"><div class="porque-stat-num">∞</div><div class="porque-stat-label">soporte post-entrega</div></div>
-    </div>
-    <ul class="porque-list">
-      <li class="porque-item"><div class="porque-icon">✦</div><div><p class="porque-item-title">Diseño a medida, no plantillas</p><p class="porque-item-desc">Cada web que hacemos es única. No usamos themes genéricos que parecen iguales a miles de otros sitios.</p></div></li>
-      <li class="porque-item"><div class="porque-icon">✦</div><div><p class="porque-item-title">Entrega rápida garantizada</p><p class="porque-item-desc">En menos de una semana tenés tu web online. Sin demoras ni excusas.</p></div></li>
-      <li class="porque-item"><div class="porque-icon">✦</div><div><p class="porque-item-title">Precios claros y fijos</p><p class="porque-item-desc">Nada de sorpresas. Sabés cuánto pagás desde el primer día. Sin costos ocultos.</p></div></li>
-      <li class="porque-item"><div class="porque-icon">✦</div><div><p class="porque-item-title">Soporte en español, siempre</p><p class="porque-item-desc">Hablamos tu idioma y entendemos el mercado local. Siempre hay alguien para responder.</p></div></li>
-    </ul>
-  </section>
-
-  <section id="portfolio">
-    <div class="section-header">
-      <div>
-        <p class="section-label">Trabajos y demos</p>
-        <h2 class="section-title" style="margin-bottom:0">Lo que podemos hacer</h2>
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <span class="section-label">Lo que hacemos</span>
+      <h2 class="section-title">Nuestras Soluciones</h2>
+      <div class="servicios-grid">
+        <article class="servicio-card">
+          <span class="servicio-icon">⚡</span>
+          <h3>Landing Page</h3>
+          <p>Una página impactante diseñada para captar clientes y generar consultas. Lista en 5 días hábiles.</p>
+          <p class="servicio-price">U$S 100 <span>/ pago único</span></p>
+        </article>
+        <article class="servicio-card">
+          <span class="servicio-icon">🖥</span>
+          <h3>Web Corporativa</h3>
+          <p>Sitio web multisección con diseño personalizado, optimización SEO y branding completo.</p>
+          <p class="servicio-price">U$S 250 <span>/ pago único</span></p>
+        </article>
+        <article class="servicio-card">
+          <span class="servicio-icon">🔄</span>
+          <h3>Mantenimiento</h3>
+          <p>Soporte técnico, actualizaciones y ajustes mensuales para que tu web nunca se detenga.</p>
+          <p class="servicio-price">U$S 50 <span>/ mes</span></p>
+        </article>
       </div>
-      <a href="https://nexo-landing.pages.dev/#portfolio" target="_blank" class="section-link">Ver todos →</a>
-    </div>
-    <div class="portfolio-grid">
-      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
-        <span class="portfolio-rubro">Estética</span>
-        <span class="portfolio-name">Lumière Studio Premium</span>
-        <span class="portfolio-nivel">Modelo 3</span>
-        <span class="portfolio-arrow">→</span>
-      </a>
-      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
-        <span class="portfolio-rubro">Gastronomía</span>
-        <span class="portfolio-name">Raíces Restaurante</span>
-        <span class="portfolio-nivel">Modelo 3</span>
-        <span class="portfolio-arrow">→</span>
-      </a>
-      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-psicologa" target="_blank">
-        <span class="portfolio-rubro">Salud</span>
-        <span class="portfolio-name">Psicóloga</span>
-        <span class="portfolio-nivel">Modelo 2</span>
-        <span class="portfolio-arrow">→</span>
-      </a>
-      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
-        <span class="portfolio-rubro">Estudio Jurídico</span>
-        <span class="portfolio-name">Fernández & Asociados</span>
-        <span class="portfolio-nivel">Modelo 2</span>
-        <span class="portfolio-arrow">→</span>
-      </a>
-      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-barberia" target="_blank">
-        <span class="portfolio-rubro">Barbería</span>
-        <span class="portfolio-name">Barbería</span>
-        <span class="portfolio-nivel">Modelo 2</span>
-        <span class="portfolio-arrow">→</span>
-      </a>
-      <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">
-        <span class="portfolio-rubro">Tienda</span>
-        <span class="portfolio-name">RegaloUnico</span>
-        <span class="portfolio-nivel">Modelo 3</span>
-        <span class="portfolio-arrow">→</span>
-      </a>
-    </div>
-    <div class="portfolio-cta">
-      <p><strong>¿No ves tu rubro?</strong> Tenemos demos de estética, gastronomía, salud, comercios y más.</p>
-      <a href="https://nexo-landing.pages.dev/#portfolio" target="_blank" class="btn-primary">Ver portfolio completo →</a>
-    </div>
-  </section>
+    </section>
 
-  <section id="cta">
-    <h2 class="cta-title">¿Listo para tener la web que tu negocio necesita?</h2>
-    <a href="#contacto" class="btn-dark">Empezar ahora →</a>
-  </section>
-
-  <section id="contacto">
-    <p class="section-label">Hablemos</p>
-    <h2 class="section-title">Pedí tu presupuesto gratis</h2>
-    <div class="contacto-grid">
-      <div class="contacto-info">
-        <h3 class="contacto-info-title">Sin compromiso ni tecnicismos</h3>
-        <p>Contanos de tu negocio y te respondemos con un presupuesto claro en menos de 24 horas. Sin vueltas.</p>
-        <ul class="contacto-datos">
-          <li class="contacto-dato"><strong>Respuesta</strong>En menos de 24 horas hábiles</li>
-          <li class="contacto-dato"><strong>WhatsApp</strong>+54 9 11 2463-2544</li>
-          <li class="contacto-dato"><strong>Ubicación</strong>CABA, Buenos Aires, Argentina</li>
-          <li class="contacto-dato"><strong>Horario</strong>Lun–Vie, 9:00 a 19:00</li>
-        </ul>
+    <!-- PROCESO -->
+    <section id="proceso">
+      <span class="section-label">Metodología</span>
+      <h2 class="section-title">El proceso Nexo</h2>
+      <div class="proceso-grid">
+        <div class="proceso-step">
+          <div class="paso-num">01</div>
+          <h3 class="paso-title">Consultoría</h3>
+          <p>Entendemos tu negocio y tus objetivos de venta antes de tocar una sola línea de código.</p>
+        </div>
+        <div class="proceso-step">
+          <div class="paso-num">02</div>
+          <h3 class="paso-title">Diseño</h3>
+          <p>Creamos una interfaz moderna y funcional que represente la autoridad de tu marca.</p>
+        </div>
+        <div class="proceso-step">
+          <div class="paso-num">03</div>
+          <h3 class="paso-title">Desarrollo</h3>
+          <p>Programamos tu sitio con las mejores prácticas de velocidad y seguridad digital.</p>
+        </div>
+        <div class="proceso-step">
+          <div class="paso-num">04</div>
+          <h3 class="paso-title">Lanzamiento</h3>
+          <p>Publicamos tu web y te entregamos las llaves de tu nueva sucursal digital 24/7.</p>
+        </div>
       </div>
-      <div class="contacto-form">
-        <form id="nexoForm" onsubmit="return false;">
-          <div class="form-row">
-            <div class="form-field"><label>Nombre</label><input type="text" id="nx-nombre" placeholder="Tu nombre" required /></div>
-            <div class="form-field"><label>Email</label><input type="email" id="nx-email" placeholder="tu@email.com" required /></div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <span class="section-label">Showcase</span>
+      <h2 class="section-title">Trabajos Recientes</h2>
+      <div class="portfolio-grid">
+        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
+          <span class="portfolio-rubro">Estética</span>
+          <span class="portfolio-name">Lumière Studio</span>
+        </a>
+        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
+          <span class="portfolio-rubro">Gastronomía</span>
+          <span class="portfolio-name">Raíces Resto</span>
+        </a>
+        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
+          <span class="portfolio-rubro">Legales</span>
+          <span class="portfolio-name">Fernández & Asoc.</span>
+        </a>
+      </div>
+      <div style="text-align: center; margin-top: 50px;">
+        <a href="https://nexo-landing.pages.dev/" target="_blank" class="btn-outline" style="margin:0">Ver portfolio completo →</a>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="contacto-grid">
+        <div class="contacto-info">
+          <span class="section-label" style="text-align: left;">Contacto</span>
+          <h2 class="section-title" style="text-align: left; font-size: 2.5rem;">Hagamos algo grande.</h2>
+          <p style="color: var(--text-dim); margin-bottom: 30px;">Pedí tu presupuesto sin compromiso. Respondemos en menos de 24 horas.</p>
+          <ul style="list-style: none;">
+            <li style="margin-bottom: 20px;"><strong>WhatsApp:</strong><br/>+54 9 11 2463-2544</li>
+            <li><strong>Email:</strong><br/>nexo.web@cds.com</li>
+          </ul>
+        </div>
+        
+        <form class="contacto-form" id="nexoForm" action="https://formspree.io/f/maqpkdog" method="POST">
+          <div class="form-field">
+            <label>Nombre</label>
+            <input type="text" name="name" required placeholder="Tu nombre" />
           </div>
           <div class="form-field">
-            <label>Tipo de web</label>
-            <select id="nx-tipo" required>
-              <option value="">Seleccioná una opción</option>
-              <option value="Landing page rápida">Landing page rápida</option>
-              <option value="Sitio web completo">Sitio web completo</option>
-              <option value="Mantenimiento de web existente">Mantenimiento de web existente</option>
-              <option value="No sé, necesito asesoramiento">No sé, necesito asesoramiento</option>
+            <label>Email</label>
+            <input type="email" name="email" required placeholder="tu@email.com" />
+          </div>
+          <div class="form-field">
+            <label>Tipo de Proyecto</label>
+            <select name="type" required>
+              <option value="" disabled selected>Seleccioná una opción</option>
+              <option value="Landing Page">Landing Page Rápida</option>
+              <option value="Web Completa">Sitio Web Completo</option>
+              <option value="Mantenimiento">Mantenimiento</option>
             </select>
           </div>
-          <div class="form-field"><label>Contanos de tu negocio</label><textarea id="nx-mensaje" placeholder="A qué se dedica tu negocio? Qué esperás de tu web?"></textarea></div>
-          <button type="button" class="form-submit" id="nx-btn" onclick="enviarNexo()">Enviar consulta →</button>
-          <p id="nx-status"></p>
+          <div class="form-field">
+            <label>Mensaje</label>
+            <textarea name="message" rows="4" required placeholder="¿Qué necesitás resolver?"></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="nx-btn">Enviar consulta →</button>
+          <p id="nx-status" style="margin-top: 15px; text-align: center; font-weight: 700;"></p>
         </form>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    <div class="footer-logo">Nexo<span>.</span></div>
-    <p>© 2026 Nexo Web · Parte de <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" style="color:var(--accent);text-decoration:none;">CDS</a></p>
-    <div class="footer-links">
-      <a href="https://nexo-landing.pages.dev/" target="_blank">Portfolio</a>
-      <a href="https://wa.me/5491124632544" target="_blank">WhatsApp</a>
-      <a href="#contacto">Contacto</a>
-    </div>
+    <div class="nav-logo">Nexo<span>.</span></div>
+    <p style="margin: 20px 0; font-size: 0.8rem; opacity: 0.5;">© 2026 Nexo Web · Parte del ecosistema de Consultoría Informática CDS</p>
   </footer>
 
-  <a href="https://wa.me/5491124632544?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios%20de%20dise%C3%B1o%20web" target="_blank" id="wa-float" aria-label="WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <script src="src/js/index.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // REVEAL ANIMATION
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section, .servicio-card, .proceso-step, .portfolio-item').forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+        });
+
+        // FORMSPREE AJAX
+        const form = document.getElementById('nexoForm');
+        const status = document.getElementById('nx-status');
+        const btn = document.getElementById('nx-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            btn.innerText = "ENVIANDO...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    status.innerText = "SISTEMA: Consulta enviada con éxito.";
+                    status.style.color = "var(--accent)";
+                    form.reset();
+                } else {
+                    status.innerText = "ERROR: Reintente o contacte por WhatsApp.";
+                    status.style.color = "#ff4444";
+                }
+            } catch (error) {
+                status.innerText = "ERROR DE CONEXIÓN.";
+            } finally {
+                btn.innerText = "ENVIAR CONSULTA →";
+                btn.disabled = false;
+            }
+        });
+    });
+  </script>
 </body>
-<!-- v1.0.0 -->
 </html>
