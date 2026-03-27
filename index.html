@@ -4,140 +4,142 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexo Web — Diseño Web Boutique | Agencia Digital</title>
+  <meta name="description" content="Diseño de alta calidad en 7 días. Agencia boutique que convierte visitas en clientes." />
   <link rel="icon" href="logo-cds.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg: #050505; --bg-card: rgba(20, 20, 20, 0.6); --accent: #22c55e; --accent-cds: #00f2ff; --text: #ffffff; --text-dim: #a1a1aa; --glass-border: rgba(255, 255, 255, 0.1); --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+    :root { --bg: #050505; --bg-card: rgba(18, 18, 18, 0.8); --accent: #22c55e; --accent-cds: #00f2ff; --text: #ffffff; --text-dim: #a1a1aa; --glass-border: rgba(255, 255, 255, 0.08); --transition: all 0.5s ease; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; color-scheme: dark; }
     body { background-color: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; line-height: 1.6; }
-    h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1; }
-    nav { position: fixed; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); transition: var(--transition); }
-    .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.8rem; text-decoration: none; color: #fff; font-weight: 800; }
+    h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1.1; }
+    nav { position: fixed; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); }
+    .nav-logo { font-size: 1.8rem; text-decoration: none; color: #fff; font-weight: 800; font-family: 'Syne'; }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; list-style: none; gap: 30px; }
-    .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 500; font-size: 0.9rem; }
+    .nav-links a { text-decoration: none; color: var(--text-dim); transition: 0.3s; font-size: 0.9rem; }
+    .nav-links a:hover { color: #fff; }
     .nav-cta { background: #fff; color: #000; padding: 12px 24px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
-    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 5% 80px; text-align: center; }
-    .hero-title { font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 30px; font-weight: 800; }
-    .hero-title .outline { -webkit-text-stroke: 1px #fff; color: transparent; }
-    .ticker { background: var(--accent); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap; font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; border-top: 1px solid #000; border-bottom: 1px solid #000; }
-    .ticker-track { display: inline-block; animation: ticker 30s linear infinite; }
+
+    #hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 5%; }
+    .hero-title { font-size: clamp(3rem, 10vw, 6rem); font-weight: 800; margin-bottom: 20px; }
+    .outline { -webkit-text-stroke: 1px #fff; color: transparent; }
+    .hero-desc { max-width: 600px; font-size: 1.3rem; color: var(--text-dim); margin-bottom: 40px; }
+
+    .ticker { background: var(--accent); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap; font-family: 'Syne'; font-weight: 800; font-size: 0.9rem; border-top: 1px solid #000; border-bottom: 1px solid #000; }
+    .track { display: inline-block; animation: ticker 30s linear infinite; }
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .ticker-item { margin-right: 40px; }
-    section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
-    .section-label { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 15px; display: block; }
-    .section-title { font-size: 3.5rem; margin-bottom: 60px; }
+
+    section { padding: 100px 5%; max-width: 1300px; margin: 0 auto; }
     .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    .servicio-card { background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); transition: var(--transition); }
-    .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-    .servicio-price { font-size: 1.8rem; font-weight: 800; margin-top: 30px; font-family: 'Syne'; }
-    .table-container { overflow-x: auto; margin-top: 80px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid var(--glass-border); padding: 40px; }
-    table { width: 100%; border-collapse: collapse; min-width: 700px; }
-    th, td { padding: 20px; text-align: left; border-bottom: 1px solid var(--glass-border); font-size: 0.95rem; }
-    .check { color: var(--accent); font-weight: bold; }
-    .trust-block { background: linear-gradient(90deg, rgba(0, 242, 255, 0.05), transparent); border-left: 4px solid var(--accent-cds); padding: 50px; margin: 80px 0; border-radius: 0 12px 12px 0; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .portfolio-item { background: #111; padding: 40px; border: 1px solid var(--glass-border); text-decoration: none; transition: var(--transition); }
+    .plan-card { background: var(--bg-card); padding: 50px; border-radius: 8px; border: 1px solid var(--glass-border); transition: 0.4s; }
+    .plan-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+    .price-tag { font-family: 'Syne'; font-size: 2.2rem; display: block; margin-top: 20px; }
+    .price-ars { display: block; font-size: 0.9rem; opacity: 0.5; font-weight: 400; margin-top: 5px; }
+
+    .compare-wrap { overflow-x: auto; margin-top: 50px; }
+    table { width: 100%; min-width: 700px; border-collapse: collapse; border: 1px solid var(--glass-border); }
+    th, td { padding: 20px; text-align: left; border: 1px solid var(--glass-border); font-size: 0.9rem; }
+    th { color: var(--accent); font-family: 'Syne'; }
+    
+    .portfolio-item { background: #111; padding: 40px; border: 1px solid var(--glass-border); text-decoration: none; color: #fff; transition: 0.3s; display: block; margin-bottom: 20px; }
     .portfolio-item:hover { border-color: #fff; }
-    .portfolio-rubro { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; }
-    .portfolio-name { display: block; font-size: 1.4rem; font-weight: 700; color: #fff; margin: 10px 0; }
-    .contacto-form { background: #111; padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); display: grid; gap: 25px; }
-    .form-field { display: flex; flex-direction: column; gap: 10px; }
-    .form-field label { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
-    .form-field input, .form-field select, .form-field textarea { background: #000; border: 1px solid var(--glass-border); padding: 18px; color: #fff; font-family: inherit; outline: none; }
-    .form-submit { background: var(--accent); color: #000; border: none; padding: 22px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); }
-    footer { padding: 80px 5% 40px; border-top: 1px solid var(--glass-border); text-align: center; }
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: var(--transition); animation: pulse 2s infinite; text-decoration: none; }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
-    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+
+    .trust-badge { background: linear-gradient(90deg, rgba(0, 242, 255, 0.1), transparent); border-left: 4px solid var(--accent-cds); padding: 40px; border-radius: 4px; margin-bottom: 40px; }
+    
+    .form-box { background: #111; padding: 50px; border: 1px solid var(--glass-border); border-radius: 8px; max-width: 600px; margin: 0 auto; }
+    input, select, textarea { width: 100%; background: #000; border: 1px solid var(--glass-border); padding: 18px; color: #fff; border-radius: 4px; font-family: inherit; margin-bottom: 20px; outline: none; transition: 0.3s; }
+    input:focus { border-color: var(--accent); }
+    .btn-submit { width: 100%; background: var(--accent); color: #000; border: none; padding: 22px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.4s; letter-spacing: 2px; }
+    
+    footer { padding: 80px 5% 40px; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-dim); }
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 800px) { .nav-links { display: none; } }
   </style>
 </head>
 <body>
-  <nav id="navbar">
-    <a class="nav-logo" href="#">Nexo<span>.</span></a>
+  <nav>
+    <a class="nav-logo" href="#">NEXO<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="https://nexo-landing.pages.dev/">Ver Demos</a></li>
+      <li><a href="https://nexo-landing.pages.dev/">Modelos y Demos</a></li>
       <li><a href="https://consultoriainformaticacds.pages.dev/">Seguridad IT</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta">Pedir Presupuesto</a>
+    <a href="#contacto" class="nav-cta">Comenzar Web</a>
   </nav>
+
   <main>
     <section id="hero">
       <div class="hero-content">
-        <p class="section-label" style="text-align: center;">Agencia Digital Boutique</p>
-        <h1 class="hero-title">Tu negocio<br/><span class="outline">web real.</span></h1>
-        <p style="max-width: 600px; margin: 0 auto; color: var(--text-dim);">Diseño de alto impacto respaldado por la seguridad de CDS.</p>
+        <h1 class="hero-title">Tu negocio<br/><span class="outline">merece una</span><br/>web real.</h1>
+        <p class="hero-desc">Desarrollo boutique para marcas de alto rendimiento. Resultados en menos de 7 días hábiles.</p>
+        <a href="#servicios" class="nav-cta" style="padding: 18px 40px; font-size: 1rem;">Ver planes de precios</a>
       </div>
     </section>
-    <div class="ticker"><div class="ticker-track"><span class="ticker-item">Diseño web profesional</span><span class="ticker-item">·</span><span class="ticker-item">Landing pages rápidas</span><span class="ticker-item">·</span><span class="ticker-item">Mantenimiento mensual</span><span class="ticker-item">·</span><span class="ticker-item">Soporte continuo</span><span class="ticker-item">·</span></div></div>
+
+    <div class="ticker"><div class="track"><span style="margin-right: 50px">DISEÑO BOUTIQUE</span><span style="margin-right: 50px">SOPORTE CDS INCLUIDO</span><span style="margin-right: 50px">PAGOS EN USD & ARS</span><span style="margin-right: 50px">DOMINIOS PROPIOS</span><span style="margin-right: 50px">MANTENIMIENTO MENSUAL</span><span style="margin-right: 50px">RESERVAS ONLINE</span></div></div>
+
     <section id="servicios">
-      <h2 class="section-title">Nuestros Modelos</h2>
       <div class="servicios-grid">
-        <article class="servicio-card"><h3>Landing Page</h3><p>U$S 100</p></article>
-        <article class="servicio-card"><h3>Web Completa</h3><p>U$S 250</p></article>
+        <article class="plan-card">
+          <h3>01 · Landing Page</h3>
+          <p>La opción perfecta para profesionales y startups.</p>
+          <span class="price-tag">U$S 100</span>
+          <span class="price-ars">$150.000 ARS aprox.</span>
+        </article>
+        <article class="plan-card">
+          <h3>02 · Web Completa</h3>
+          <p>Estructura multi-página corporativa con SEO inicial.</p>
+          <span class="price-tag">U$S 250</span>
+          <span class="price-ars">$360.000 ARS aprox.</span>
+        </article>
       </div>
-      <div class="table-container">
+
+      <div class="compare-wrap">
+        <h3>Comparativa de soluciones 2026</h3>
         <table>
-          <thead><tr><th>Característica</th><th>Landing</th><th>Standard</th></tr></thead>
+          <thead><tr><th>Detalle</th><th>Landing</th><th>Standard</th><th>Premium</th></tr></thead>
           <tbody>
-            <tr><td>Entrega</td><td>5 días</td><td>7 días</td></tr>
-            <tr><td>Hosting</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Días Entrega</td><td>5</td><td>7</td><td>10+</td></tr>
+            <tr><td>Secciones</td><td>1 continua</td><td>Nav + 5</td><td>Total a medida</td></tr>
+            <tr><td>Cambios Incluidos</td><td>1 Ronda</td><td>2 Rondas</td><td>Soporte Activo</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="trust-block">
-        <h4>🛡 Respaldo de Seguridad CDS</h4>
-        <p>Todas nuestras webs cuentan con el monitoreo de CDS.</p>
-        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" style="color:var(--accent-cds); text-decoration:none; font-weight:700;">Ver servicios de Ciberseguridad →</a>
-      </div>
     </section>
-    <section id="portfolio">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px;">
-        <h2 class="section-title" style="margin:0">Modelos Reales</h2>
-        <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.9rem; border-bottom: 1px solid var(--accent);">Ver catálogo completo →</a>
+
+    <section>
+      <div class="trust-badge">
+        <h4 style="color:var(--accent-cds); font-family:'Syne'">🛡 INTEGRIDAD TECNOLÓGICA POR CDS</h4>
+        <p style="color:var(--text-dim); margin-top:10px;">Todas nuestras entregas son supervisadas por Consultoría CDS. Blindaje real y monitoreo de infraestructura garantizados.</p>
       </div>
-      <div class="portfolio-grid">
-        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank"><span class="portfolio-rubro">Estética</span><span class="portfolio-name">Lumière Studio</span></a>
-        <a class="portfolio-item" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank"><span class="portfolio-rubro">Gastronomía</span><span class="portfolio-name">Raíces Resto</span></a>
-      </div>
+      <h2>Portafolio & Showcase</h2>
+      <a href="https://nexo-landing.pages.dev/demo-estetica-premium" class="portfolio-item" target="_blank">ESTÉTICA · <strong>Lumière Studio Premium</strong> →</a>
+      <a href="https://nexo-landing.pages.dev/demo-restaurante" class="portfolio-item" target="_blank">RESTÓ · <strong>Raíces Restaurante Premium</strong> →</a>
+      <div style="margin-top:40px; text-align:center"><a href="https://nexo-landing.pages.dev/" target="_blank" style="color:var(--accent); font-weight:700;">Ver las 10 demos completas →</a></div>
     </section>
+
     <section id="contacto">
-      <div class="contacto-form">
-        <h2 style="margin-bottom: 30px;">Hagamos tu web</h2>
-        <form id="nexoForm" action="https://formspree.io/f/xpqynaqq" method="POST">
-          <div class="form-field"><label>Nombre</label><input type="text" name="nombre" required /></div>
-          <div class="form-field"><label>Email</label><input type="email" name="email" required /></div>
-          <div class="form-field"><label>Mensaje</label><textarea name="mensaje" rows="4" required></textarea></div>
-          <button type="submit" class="form-submit" id="nx-btn">Enviar consulta →</button>
-          <p id="nx-status" style="margin-top: 15px; text-align: center; font-weight: 700;"></p>
+      <div class="form-box">
+        <h2 style="margin-bottom:40px; text-align:center;">Pedí presupuesto</h2>
+        <form action="https://formspree.io/f/xpqynaqq" method="POST">
+          <input type="text" name="nombre" placeholder="Nombre" required />
+          <input type="email" name="email" placeholder="email@negocio.com" required />
+          <select name="modelo" required>
+            <option value="Landing">Modelo 01: Landing</option>
+            <option value="Standard">Modelo 02: Web Standard</option>
+            <option value="Mantenimiento">Mantenimiento Web</option>
+          </select>
+          <textarea name="mensaje" rows="4" placeholder="¿Cómo te ayudamos?" required></textarea>
+          <button type="submit" class="btn-submit">Enviar Requerimiento</button>
         </form>
       </div>
     </section>
   </main>
-  <footer><p>© 2026 Nexo Web · Parte de CDS</p></footer>
+  <footer><p>© 2026 NEXO WEB. Agencia del ecosistema de seguridad CDS. CABA.</p></footer>
   <a href="https://wa.me/5491124632544" id="wa-float" target="_blank"><svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
-      document.querySelectorAll('section, article').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
-      const form = document.getElementById('nexoForm');
-      const status = document.getElementById('nx-status');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = document.getElementById('nx-btn');
-        btn.innerText = "ENVIANDO...";
-        const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-        if (response.ok) { status.innerText = "¡Consulta recibida!"; status.style.color = "var(--accent)"; form.reset(); }
-        else { status.innerText = "Error. Intenta por WhatsApp."; }
-        btn.innerText = "Enviar consulta →";
-      });
-    });
-  </script>
 </body>
 </html>
