@@ -1,245 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexo Web | Agencia de Diseño Web Boutique — Buenos Aires</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexo Web | Agencia de Diseño Web y Desarrollo Premium</title>
 
-  <!-- SEO MEJORADO -->
-  <meta name="description" content="Agencia de diseño web boutique en Buenos Aires. Construimos sitios web de alta conversión para marcas que exigen resultados. Respaldados por CDS Consultoría IT." />
-  <meta name="keywords" content="agencia web Buenos Aires, diseño web CABA, páginas web profesionales argentina, desarrollo web, landing page argentina, tienda online argentina, web corporativa" />
-  <meta name="author" content="Nexo Web — CDS Consultoría Informática" />
-  <meta name="robots" content="index, follow" />
-  <meta name="geo.region" content="AR-C" />
-  <meta name="geo.placename" content="Buenos Aires, CABA" />
+  <meta name="description" content="Diseño web corporativo, landing pages y tiendas online de alta conversión. Agencia creativa premium en Buenos Aires, parte del Ecosistema CDS.">
+  <meta name="author" content="Nexo Web">
 
-  <!-- OPEN GRAPH COMPLETO -->
-  <meta property="og:title" content="Nexo Web | Ecosistemas Digitales de Alto Valor" />
-  <meta property="og:description" content="No diseñamos plantillas. Construimos infraestructuras web de alta conversión para marcas que exigen resultados en Argentina." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nexoweb.pages.dev/" />
-  <meta property="og:image" content="https://nexoweb.pages.dev/logo-cds.png" />
-  <meta property="og:locale" content="es_AR" />
-  <meta property="og:site_name" content="Nexo Web" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;800&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- TWITTER CARDS -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nexo Web | Agencia de Diseño Web Boutique" />
-  <meta name="twitter:description" content="Sitios web de alta conversión para negocios argentinos. Respaldados por CDS." />
-  <meta name="twitter:image" content="https://nexoweb.pages.dev/logo-cds.png" />
+  <link rel="stylesheet" href="./src/css/variables.css">
+  <link rel="stylesheet" href="./src/css/base.css">
+  <link rel="stylesheet" href="./src/css/layout.css">
+  <link rel="stylesheet" href="./src/css/components.css">
 
-  <!-- SCHEMA MARKUP -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Nexo Web",
-    "description": "Agencia de diseño web boutique orientada a resultados en Buenos Aires, Argentina.",
-    "url": "https://nexoweb.pages.dev/",
-    "telephone": "+5491124632544",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Buenos Aires",
-      "addressRegion": "CABA",
-      "addressCountry": "AR"
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Argentina"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Servicios de Diseño Web",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing Page de Alta Conversión" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Corporativa" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tienda Online Premium" } }
-      ]
-    },
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "CDS Consultoría Informática",
-      "url": "https://consultoriainformaticacds.pages.dev/"
-    },
-    "sameAs": [
-      "https://nexo-landing.pages.dev/",
-      "https://consultoriainformaticacds.pages.dev/"
-    ]
-  }
-  </script>
-
-  <!-- GOOGLE ANALYTICS 4 — Reemplazá G-XXXXXXXXXX con tu ID real -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-
-  <link rel="icon" href="logo-cds.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  
-  <style>
-    :root { --bg: #000000; --card: #0a0a0a; --accent: #22c55e; --accent-2: #00f2ff; --text: #ffffff; --dim: #888888; --border: #1a1a1a; --accent-cds: #00f2ff; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-    body { background-color: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; line-height: 1.6; }
-    h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1; }
-    
-    nav { position: fixed; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); }
-    .logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-decoration: none; font-family: 'Syne'; }
-    .logo span { color: var(--accent); }
-    .nav-cta { color: #fff; border: 1px solid #fff; padding: 10px 20px; border-radius: 100px; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
-    .nav-cta:hover { background: #fff; color: #000; }
-
-    .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 5%; position: relative; }
-    .hero::after { content: ''; position: absolute; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(34,197,94,0.1), transparent 60%); z-index: -1; filter: blur(80px); }
-    .hero-badge { color: var(--accent); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 25px; font-weight: 600; }
-    .hero h1 { font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 800; margin-bottom: 20px; letter-spacing: -2px; }
-    .outline { -webkit-text-stroke: 1px #fff; color: transparent; }
-    .hero p { font-size: 1.25rem; color: var(--dim); max-width: 550px; margin-bottom: 40px; }
-    .btn-main { background: var(--accent); color: #000; padding: 18px 40px; border-radius: 4px; font-weight: 800; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
-    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(34,197,94,0.2); }
-
-    .ticker { background: var(--accent); color: #000; padding: 15px 0; overflow: hidden; white-space: nowrap; font-family: 'Syne'; font-weight: 800; text-transform: uppercase; border-top: 1px solid #000; border-bottom: 1px solid #000; }
-    .track { display: inline-block; animation: ticker 20s linear infinite; }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .tick-item { margin-right: 50px; }
-
-    section { padding: 120px 5%; max-width: 1200px; margin: 0 auto; }
-    .sec-label { color: var(--accent); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 15px; font-weight: 600; }
-    .sec-title { font-size: 3rem; margin-bottom: 60px; }
-
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 40px; }
-    .feat-card { background: var(--card); border: 1px solid var(--border); padding: 40px; border-radius: 8px; transition: 0.3s; }
-    .feat-card:hover { border-color: var(--accent); background: #111; }
-    .feat-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-    .feat-card p { color: var(--dim); font-size: 0.95rem; }
-
-    .trust-block { border-left: 4px solid var(--accent-cds); padding: 40px; background: linear-gradient(90deg, rgba(0,242,255,0.05), transparent); margin: 60px 0; border-radius: 0 8px 8px 0; }
-    .trust-block h3 { color: var(--accent-cds); font-size: 1.2rem; margin-bottom: 10px; }
-
-    .form-box { background: var(--card); border: 1px solid var(--border); padding: 60px; border-radius: 8px; max-width: 700px; margin: 0 auto; }
-    .form-box h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
-    
-    .form-group { margin-bottom: 20px; text-align: left; }
-    .form-group label { display: block; font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 8px; letter-spacing: 1px; cursor: pointer; text-transform: uppercase; }
-    input, select, textarea { width: 100%; background: #000; border: 1px solid var(--border); padding: 18px; color: #fff; font-family: inherit; outline: none; border-radius: 4px; transition: 0.3s; }
-    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
-    
-    .btn-submit { width: 100%; background: var(--accent); color: #000; padding: 20px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-radius: 4px; margin-top: 10px; }
-    .btn-submit:hover { box-shadow: 0 0 20px rgba(34,197,94,0.3); }
-
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; }
-    
-    footer { padding: 60px 5%; text-align: center; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.8rem; }
-    .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-  </style>
+  <script type="module" src="./src/js/index.js" defer></script>
 </head>
 <body>
 
   <nav>
-    <a href="#" class="logo">NEXO<span>.</span></a>
-    <div style="display: flex; gap: 20px; align-items: center;">
-      <a href="https://nexo-landing.pages.dev/" style="color:var(--dim); text-decoration:none; font-size:0.8rem; font-weight:600;">CATÁLOGO</a>
-      <a href="#contacto" class="nav-cta">Solicitar Cotización</a>
-    </div>
+    <a href="#" class="logo">NEXO <span>WEB</span><br><small style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted); letter-spacing: 2px;">Agencia Creativa Elite</small></a>
+    <a href="#contacto" class="btn-secondary">Agendar Asesoría</a>
   </nav>
 
   <header class="hero">
-    <span class="hero-badge">Agencia de Diseño Boutique</span>
-    <h1 class="hero-title">Tu negocio<br><span class="outline">web real.</span></h1>
-    <p class="hero-desc">No diseñamos plantillas. Construimos infraestructuras web de alta conversión para marcas que exigen resultados.</p>
-    <a href="#contacto" class="btn-main">Iniciar Proyecto Digital</a>
+    <div style="border: 1px solid var(--accent-pink); color: var(--accent-pink); padding: 8px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 30px; text-transform: uppercase; background: rgba(236, 72, 153, 0.05);">Diseño de Alta Conversión</div>
+    <h1>Diseñamos tu <span>Éxito Digital</span></h1>
+    <p style="max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-muted);">
+      Creamos páginas web, tiendas online y landing pages premium que no solo se ven increíbles, sino que <strong>generan ventas reales</strong>.
+    </p>
+    <a href="#servicios" class="btn-primary">Ver Nuestros Servicios</a>
   </header>
 
-  <div class="ticker"><div class="track"><span class="tick-item">Diseño Profesional</span><span class="tick-item">·</span><span class="tick-item">Optimización CRO</span><span class="tick-item">·</span><span class="tick-item">Soporte CDS Incluido</span><span class="tick-item">·</span><span class="tick-item">Mantenimiento</span><span class="tick-item">·</span><span class="tick-item">Entrega Rápida</span><span class="tick-item">·</span><span class="tick-item">Diseño Profesional</span><span class="tick-item">·</span><span class="tick-item">Optimización CRO</span><span class="tick-item">·</span><span class="tick-item">Soporte CDS Incluido</span><span class="tick-item">·</span><span class="tick-item">Mantenimiento</span><span class="tick-item">·</span><span class="tick-item">Entrega Rápida</span><span class="tick-item">·</span></div></div>
+  <section id="servicios">
+    <h2 style="text-align: center; margin-bottom: 60px; font-size: 2.8rem;">Soluciones <span style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Creativas</span></h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+      
+      <article class="card">
+        <h3 style="font-size: 1.6rem; margin-bottom: 15px;">Sitios Web Corporativos</h3>
+        <p style="color: var(--text-muted);">Diseño a medida para empresas que buscan transmitir autoridad, confianza y profesionalismo en su sector.</p>
+      </article>
 
-  <section>
-    <span class="sec-label">Ingeniería Web</span>
-    <h2 class="sec-title">Construcción de Valor</h2>
-    <div class="features">
-      <div class="feat-card"><h3>01 / UI Premium</h3><p>Interfaces minimalistas que proyectan exclusividad. Posicionamos tu marca en el segmento más alto de tu mercado.</p></div>
-      <div class="feat-card"><h3>02 / Conversión</h3><p>Arquitectura pensada en UX/CRO para eliminar fricciones y forzar el contacto directo de clientes calificados.</p></div>
-      <div class="feat-card"><h3>03 / Escalabilidad</h3><p>Código limpio y optimizado para Google. Tu web cargará rápido hoy y estará lista para crecer mañana.</p></div>
+      <article class="card">
+        <h3 style="font-size: 1.6rem; margin-bottom: 15px;">Landing Pages</h3>
+        <p style="color: var(--text-muted);">Páginas de aterrizaje ultra rápidas y optimizadas psicológicamente para convertir visitantes en clientes (Leads).</p>
+      </article>
+
+      <article class="card">
+        <h3 style="font-size: 1.6rem; margin-bottom: 15px;">E-commerce / Tiendas</h3>
+        <p style="color: var(--text-muted);">Plataformas de venta online seguras, intuitivas y diseñadas para maximizar la tasa de conversión y el ticket promedio.</p>
+      </article>
+
+      <article class="card">
+        <h3 style="font-size: 1.6rem; margin-bottom: 15px;">Rediseño y UX/UI</h3>
+        <p style="color: var(--text-muted);">Auditamos y modernizamos tu sitio web actual para adaptarlo a los estándares estéticos y técnicos del mercado.</p>
+      </article>
+
     </div>
 
-    <div class="trust-block reveal">
-      <h3>🛡 Ciberseguridad por CDS</h3>
-      <p>A diferencia de diseñadores freelance, NEXO está respaldado por <strong>Consultoría CDS</strong>. Tu web nace auditada, encriptada y protegida a nivel corporativo.</p>
-      <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" style="color:var(--accent-cds); text-decoration:none; display:inline-block; margin-top:15px; font-weight:600; border-bottom:1px solid var(--accent-cds);">Ver Protocolos de Seguridad →</a>
+    <div style="border-left: 4px solid var(--accent-purple); padding: 40px; background: linear-gradient(90deg, rgba(139, 92, 246, 0.05), transparent); margin: 80px 0 0; border-radius: 0 20px 20px 0;">
+      <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Respaldado por CDS Consultoría</h3>
+      <p style="color: var(--text-muted); margin-bottom: 25px;">
+        La estética no es nada sin seguridad. Como parte del <strong>Ecosistema CDS</strong>, tus activos digitales pueden ser alojados en infraestructuras blindadas y contar con soporte IT 24/7.
+      </p>
+      <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display: inline-block;">
+        Conocer CDS Consultoría ↗
+      </a>
     </div>
   </section>
 
-  <section id="contacto">
-    <div class="form-box reveal">
-      <h2>Briefing de Proyecto</h2>
-      <form id="nexoForm" action="https://formspree.io/f/xpqynaqq" method="POST">
-        <div class="form-group">
-          <label for="nombre">Nombre Completo</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Ej: Roberto Pérez" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Corporativo</label>
-          <input type="email" id="email" name="email" placeholder="roberto@empresa.com" required>
-        </div>
-        <div class="form-group">
-          <label for="servicio">Tipo de Arquitectura Requerida</label>
-          <select id="servicio" name="servicio" required>
-            <option value="" disabled selected>Seleccione una opción</option>
-            <option value="Landing">Landing Page (Conversión rápida)</option>
-            <option value="Corporativa">Web Corporativa (Autoridad de marca)</option>
-            <option value="Ecommerce">Tienda Premium / E-Commerce</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="mensaje">Objetivo de su Proyecto</label>
-          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describa el objetivo de su proyecto..." required></textarea>
-        </div>
-        <button type="submit" class="btn-submit" id="nx-btn">Enviar Requerimiento Oficial</button>
-        <p id="nx-status" style="margin-top:15px; text-align:center; font-weight:600; font-size:0.85rem; color:var(--accent);"></p>
-      </form>
-    </div>
+  <section id="contacto" class="card" style="margin: 0 5% 100px; text-align: center;">
+    <h2 style="margin-bottom: 30px; font-size: 2.2rem;">Lleva tu marca al siguiente nivel</h2>
+    
+    <form id="nexoForm" action="https://formspree.io/f/maqpkdog" method="POST" style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+      
+      <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+        <input type="text" name="nombre" placeholder="Tu Nombre" required style="flex: 1; min-width: 200px; padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; font-size: 1rem;">
+        <input type="text" name="empresa" placeholder="Empresa / Proyecto" style="flex: 1; min-width: 200px; padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; font-size: 1rem;">
+      </div>
+
+      <input type="email" name="email" placeholder="Correo Electrónico" required style="padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; font-size: 1rem;">
+      
+      <select name="servicio" required style="padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; cursor: pointer; font-size: 1rem;">
+        <option value="" disabled selected>¿Qué necesitas diseñar?</option>
+        <option value="Landing Page">Landing Page (Alta Conversión)</option>
+        <option value="Sitio Corporativo">Sitio Web Corporativo</option>
+        <option value="Tienda Online">E-commerce / Tienda Online</option>
+        <option value="Rediseño">Rediseño de sitio actual</option>
+        <option value="Seguridad CDS">Necesito Seguridad/Soporte IT (Ir a CDS)</option>
+        <option value="Otro">Otro proyecto</option>
+      </select>
+
+      <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto o idea..." required style="padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; min-height: 140px; resize: vertical; font-size: 1rem;"></textarea>
+
+      <button type="submit" id="nexo-btn" class="btn-primary" style="width: 100%;">Agendar Asesoría Creativa</button>
+      
+      <div id="form-status" style="margin-top: 10px; font-weight: 600; font-size: 0.95rem;"></div>
+    </form>
   </section>
 
-  <footer>© 2026 NEXO WEB. Arquitectura Digital de Alta Gama. Parte de CDS.</footer>
+  <footer style="border-top: 1px solid var(--card-border); padding: 40px 5%; text-align: center; background: var(--bg-secondary);">
+    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
+      <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Nexo Web. Todos los derechos reservados.</p>
+      <p style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 0.5px;">
+        Una división creativa del <strong>Ecosistema CDS</strong> | Infraestructura IT por 
+        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-purple); text-decoration: none; font-weight: 700; transition: var(--transition-smooth);">CDS Consultoría ↗</a>
+      </p>
+    </div>
+  </footer>
 
-  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank" aria-label="Contacto por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const obs = new IntersectionObserver(e => e.forEach(i => { if(i.isIntersecting) i.target.classList.add('visible') }), { threshold: 0.1 });
-      document.querySelectorAll('section, .feat-card, .reveal').forEach(el => obs.observe(el));
-      
-      const form = document.getElementById('nexoForm');
-      const btn = document.getElementById('nx-btn');
-      const status = document.getElementById('nx-status');
-      
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        btn.innerText = "PROCESANDO..."; 
-        btn.disabled = true;
-        try {
-          const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }});
-          if (res.ok) { 
-            status.innerText = "REQUERIMIENTO RECIBIDO."; 
-            form.reset(); 
-          } else { 
-            status.innerText = "ERROR EN SERVIDOR. USE WHATSAPP."; 
-            status.style.color = "#ef4444"; 
-          }
-        } catch { 
-          status.innerText = "ERROR DE CONEXIÓN."; 
-        } finally { 
-          btn.innerText = "Enviar Requerimiento Oficial"; 
-          btn.disabled = false; 
-        }
-      });
-    });
-  </script>
 </body>
 </html>
