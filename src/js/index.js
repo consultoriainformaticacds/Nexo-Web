@@ -1,42 +1,75 @@
-async function enviarNexo() {
-  var btn = document.getElementById('nx-btn');
-  var status = document.getElementById('nx-status');
-  var nombre = document.getElementById('nx-nombre').value.trim();
-  var email = document.getElementById('nx-email').value.trim();
-  var tipo = document.getElementById('nx-tipo').value;
-  var mensaje = document.getElementById('nx-mensaje').value.trim();
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('nexoForm');
+    const status = document.getElementById('form-status');
+    const btn = document.getElementById('nexo-btn');
 
-  if (!nombre || !email || !tipo) {
-    status.style.color = '#ff6b6b';
-    status.textContent = 'Por favor completá los campos obligatorios.';
-    return;
-  }
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evita que la página salte
+            
+            const originalText = btn.innerText;
+            const data = new FormData(form);
+            
+            // UX Visual: Botón procesando
+            btn.innerText = "Procesando...";
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            if (status) status.innerHTML = ""; 
 
-  btn.textContent = 'Enviando...';
-  btn.disabled = true;
-  status.textContent = '';
+            try {
+                // Enviamos a tu endpoint específico de Nexo Web
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
 
-  try {
-    var response = await fetch('https://formspree.io/f/xpqynaqq', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ nombre: nombre, email: email, tipo_web: tipo, mensaje: mensaje })
-    });
-    if (response.ok) {
-      status.style.color = '#C8F135';
-      status.textContent = 'Mensaje enviado. Te respondemos en menos de 24 horas.';
-      document.getElementById('nx-nombre').value = '';
-      document.getElementById('nx-email').value = '';
-      document.getElementById('nx-tipo').value = '';
-      document.getElementById('nx-mensaje').value = '';
-    } else {
-      throw new Error('Error');
+                if (response.ok) {
+                    // Magia Visual Creativa
+                    btn.innerText = "¡Asesoría Solicitada!";
+                    btn.style.background = "var(--accent-pink)";
+                    btn.style.color = "#fff";
+                    btn.style.opacity = '1';
+                    
+                    if (status) {
+                        status.innerHTML = "¡Gracias! Nuestro equipo creativo te contactará muy pronto.";
+                        status.style.color = "var(--accent-pink)";
+                    }
+                    form.reset(); // Limpia los campos
+
+                    // Volver a la normalidad en 5 seg
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.background = "var(--accent-gradient)";
+                        btn.style.color = "white";
+                        btn.disabled = false;
+                        if (status) status.innerHTML = "";
+                    }, 5000);
+
+                } else {
+                    const result = await response.json();
+                    if (status) {
+                        status.innerHTML = "Hubo un error: " + (result.errors ? result.errors[0].message : "Intenta nuevamente");
+                        status.style.color = "#ff4444"; 
+                    }
+                    throw new Error('Error de Formspree');
+                }
+            } catch (error) {
+                // Plan B: Falla de red
+                if (status && !status.innerHTML) {
+                    status.innerHTML = "Error de conexión. Por favor, intenta más tarde.";
+                    status.style.color = "#ff4444";
+                }
+                btn.style.borderColor = "#ff4444";
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = "var(--accent-gradient)";
+                    btn.style.borderColor = "transparent";
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                }, 5000);
+            }
+        });
     }
-  } catch(err) {
-    status.style.color = '#ff6b6b';
-    status.textContent = 'Error al enviar. Contactanos por WhatsApp.';
-  }
-
-  btn.textContent = 'Enviar consulta';
-  btn.disabled = false;
-}
+});
