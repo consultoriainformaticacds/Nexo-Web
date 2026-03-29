@@ -3,14 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexo Web | Ecosistemas Digitales de Alto Valor</title>
-  <meta name="description" content="Diseño web boutique orientado a resultados. Construimos la autoridad digital de tu negocio en 7 días." />
-  
+  <title>Nexo Web | Agencia de Diseño Web Boutique — Buenos Aires</title>
+
+  <!-- SEO MEJORADO -->
+  <meta name="description" content="Agencia de diseño web boutique en Buenos Aires. Construimos sitios web de alta conversión para marcas que exigen resultados. Respaldados por CDS Consultoría IT." />
+  <meta name="keywords" content="agencia web Buenos Aires, diseño web CABA, páginas web profesionales argentina, desarrollo web, landing page argentina, tienda online argentina, web corporativa" />
+  <meta name="author" content="Nexo Web — CDS Consultoría Informática" />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="AR-C" />
+  <meta name="geo.placename" content="Buenos Aires, CABA" />
+
+  <!-- OPEN GRAPH COMPLETO -->
   <meta property="og:title" content="Nexo Web | Ecosistemas Digitales de Alto Valor" />
-  <meta property="og:description" content="Diseño web boutique orientado a resultados. Construimos la autoridad digital de tu negocio en 7 días." />
+  <meta property="og:description" content="No diseñamos plantillas. Construimos infraestructuras web de alta conversión para marcas que exigen resultados en Argentina." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nexoweb.pages.dev/" />
   <meta property="og:image" content="https://nexoweb.pages.dev/logo-cds.png" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Nexo Web" />
+
+  <!-- TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nexo Web | Agencia de Diseño Web Boutique" />
+  <meta name="twitter:description" content="Sitios web de alta conversión para negocios argentinos. Respaldados por CDS." />
+  <meta name="twitter:image" content="https://nexoweb.pages.dev/logo-cds.png" />
+
+  <!-- SCHEMA MARKUP -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Nexo Web",
+    "description": "Agencia de diseño web boutique orientada a resultados en Buenos Aires, Argentina.",
+    "url": "https://nexoweb.pages.dev/",
+    "telephone": "+5491124632544",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressRegion": "CABA",
+      "addressCountry": "AR"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Argentina"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Diseño Web",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing Page de Alta Conversión" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Corporativa" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tienda Online Premium" } }
+      ]
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "CDS Consultoría Informática",
+      "url": "https://consultoriainformaticacds.pages.dev/"
+    },
+    "sameAs": [
+      "https://nexo-landing.pages.dev/",
+      "https://consultoriainformaticacds.pages.dev/"
+    ]
+  }
+  </script>
+
+  <!-- GOOGLE ANALYTICS 4 — Reemplazá G-XXXXXXXXXX con tu ID real -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 
   <link rel="icon" href="logo-cds.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -18,7 +83,6 @@
   <style>
     :root { --bg: #000000; --card: #0a0a0a; --accent: #22c55e; --accent-2: #00f2ff; --text: #ffffff; --dim: #888888; --border: #1a1a1a; --accent-cds: #00f2ff; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    /* MEJORA: scroll-padding-top evita que el nav tape el título al usar anclas */
     html { scroll-behavior: smooth; scroll-padding-top: 100px; }
     body { background-color: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; overflow-x: hidden; line-height: 1.6; }
     h1, h2, h3 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1; }
@@ -47,7 +111,6 @@
     .sec-label { color: var(--accent); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 15px; font-weight: 600; }
     .sec-title { font-size: 3rem; margin-bottom: 60px; }
 
-    /* MEJORA: min(100%, 280px) evita overflow en pantallas móviles muy reducidas */
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 40px; }
     .feat-card { background: var(--card); border: 1px solid var(--border); padding: 40px; border-radius: 8px; transition: 0.3s; }
     .feat-card:hover { border-color: var(--accent); background: #111; }
@@ -60,7 +123,6 @@
     .form-box { background: var(--card); border: 1px solid var(--border); padding: 60px; border-radius: 8px; max-width: 700px; margin: 0 auto; }
     .form-box h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
     
-    /* MEJORA: Estilos para las etiquetas del formulario */
     .form-group { margin-bottom: 20px; text-align: left; }
     .form-group label { display: block; font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 8px; letter-spacing: 1px; cursor: pointer; text-transform: uppercase; }
     input, select, textarea { width: 100%; background: #000; border: 1px solid var(--border); padding: 18px; color: #fff; font-family: inherit; outline: none; border-radius: 4px; transition: 0.3s; }
@@ -93,7 +155,7 @@
     <a href="#contacto" class="btn-main">Iniciar Proyecto Digital</a>
   </header>
 
-  <div class="ticker"><div class="track"><span class="tick-item">Diseño Profesional</span><span class="tick-item">·</span><span class="tick-item">Optimización CRO</span><span class="tick-item">·</span><span class="tick-item">Soporte CDS Incluido</span><span class="tick-item">·</span><span class="tick-item">Mantenimiento</span><span class="tick-item">·</span><span class="tick-item">Entrega Rápida</span><span class="tick-item">·</span></div></div>
+  <div class="ticker"><div class="track"><span class="tick-item">Diseño Profesional</span><span class="tick-item">·</span><span class="tick-item">Optimización CRO</span><span class="tick-item">·</span><span class="tick-item">Soporte CDS Incluido</span><span class="tick-item">·</span><span class="tick-item">Mantenimiento</span><span class="tick-item">·</span><span class="tick-item">Entrega Rápida</span><span class="tick-item">·</span><span class="tick-item">Diseño Profesional</span><span class="tick-item">·</span><span class="tick-item">Optimización CRO</span><span class="tick-item">·</span><span class="tick-item">Soporte CDS Incluido</span><span class="tick-item">·</span><span class="tick-item">Mantenimiento</span><span class="tick-item">·</span><span class="tick-item">Entrega Rápida</span><span class="tick-item">·</span></div></div>
 
   <section>
     <span class="sec-label">Ingeniería Web</span>
@@ -119,12 +181,10 @@
           <label for="nombre">Nombre Completo</label>
           <input type="text" id="nombre" name="nombre" placeholder="Ej: Roberto Pérez" required>
         </div>
-        
         <div class="form-group">
           <label for="email">Email Corporativo</label>
           <input type="email" id="email" name="email" placeholder="roberto@empresa.com" required>
         </div>
-        
         <div class="form-group">
           <label for="servicio">Tipo de Arquitectura Requerida</label>
           <select id="servicio" name="servicio" required>
@@ -134,12 +194,10 @@
             <option value="Ecommerce">Tienda Premium / E-Commerce</option>
           </select>
         </div>
-        
         <div class="form-group">
           <label for="mensaje">Objetivo de su Proyecto</label>
           <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describa el objetivo de su proyecto..." required></textarea>
         </div>
-        
         <button type="submit" class="btn-submit" id="nx-btn">Enviar Requerimiento Oficial</button>
         <p id="nx-status" style="margin-top:15px; text-align:center; font-weight:600; font-size:0.85rem; color:var(--accent);"></p>
       </form>
@@ -154,11 +212,9 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Intersection Observer para animaciones (Reveal)
       const obs = new IntersectionObserver(e => e.forEach(i => { if(i.isIntersecting) i.target.classList.add('visible') }), { threshold: 0.1 });
       document.querySelectorAll('section, .feat-card, .reveal').forEach(el => obs.observe(el));
       
-      // Formspree Fetch Intercept
       const form = document.getElementById('nexoForm');
       const btn = document.getElementById('nx-btn');
       const status = document.getElementById('nx-status');
