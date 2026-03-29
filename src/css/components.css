@@ -1,0 +1,63 @@
+/* Botón principal vibrante */
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 100px; /* Botones pill-shape para diseño moderno */
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-creative);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px -5px rgba(236, 72, 153, 0.4);
+}
+
+/* Botón secundario outline */
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-pink);
+  background: rgba(236, 72, 153, 0.05);
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+  margin-bottom: 25px;
+  font-weight: 800;
+}
+
+.hero h1 span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 40px;
+  border-radius: 20px; /* Bordes más redondeados que en la consultora */
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(15px);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(236, 72, 153, 0.3);
+  box-shadow: var(--shadow-creative);
+}
