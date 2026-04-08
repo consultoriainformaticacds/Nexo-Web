@@ -1,117 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexo Web | Agencia de Diseño Web y Desarrollo Premium</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Web | Arquitectura Digital para Empresas</title>
+    <meta name="description" content="Diseño y desarrollo de infraestructuras web B2B de alto rendimiento. Ecosistemas digitales escalables, auditados por CDS.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* RESET & VARIABLES (Design System Nexo 2026) */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg-dark: #0A0A0A;
+            --bg-card: #111110;
+            --accent-nexo: #C8F135; /* Verde Neón */
+            --accent-cds: #00f2ff; /* Cian Seguridad */
+            --text-main: #F8F8F5;
+            --text-muted: #888888;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+        }
+        
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-  <meta name="description" content="Diseño web corporativo, landing pages y tiendas online de alta conversión. Agencia creativa premium en Buenos Aires, parte del Ecosistema CDS.">
-  <meta name="author" content="Nexo Web">
+        h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;800&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+        /* NAVEGACIÓN */
+        nav {
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 5%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .nav-brand {
+            text-decoration: none; color: var(--text-main);
+            font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem;
+            line-height: 1.2;
+        }
+        .nav-brand span { color: var(--accent-nexo); }
+        .nav-sub { display: block; font-family: 'Instrument Sans'; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px; font-weight: 400;}
+        
+        .btn-outline {
+            border: 1px solid var(--accent-nexo); color: var(--accent-nexo);
+            padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none;
+            font-size: 0.8rem; font-weight: 600; transition: all 0.3s ease;
+        }
+        .btn-outline:hover { background: var(--accent-nexo); color: var(--bg-dark); }
 
-  <link rel="stylesheet" href="./src/css/variables.css">
-  <link rel="stylesheet" href="./src/css/base.css">
-  <link rel="stylesheet" href="./src/css/layout.css">
-  <link rel="stylesheet" href="./src/css/components.css">
+        /* HERO SECTION */
+        .hero {
+            padding: 7rem 5% 5rem;
+            text-align: center;
+            max-width: 900px; margin: 0 auto;
+        }
+        .hero-tag {
+            display: inline-block;
+            color: var(--accent-nexo); font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem;
+            padding: 0.4rem 1rem; border: 1px solid rgba(200, 241, 53, 0.2); border-radius: 4px;
+            background: rgba(200, 241, 53, 0.05);
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        .hero h1 span { -webkit-text-stroke: 1px var(--text-main); color: transparent; }
+        .hero p {
+            font-size: 1.1rem; color: var(--text-muted);
+            max-width: 700px; margin: 0 auto 2.5rem; font-weight: 400;
+        }
+        
+        .btn-solid {
+            background: var(--accent-nexo); color: var(--bg-dark);
+            padding: 1rem 2rem; border-radius: 4px; text-decoration: none;
+            font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.9rem;
+            text-transform: uppercase; transition: transform 0.2s ease;
+            display: inline-block;
+        }
+        .btn-solid:hover { transform: translateY(-2px); }
 
-  <script type="module" src="./src/js/index.js" defer></script>
+        /* SERVICIOS / ARQUITECTURAS */
+        .services { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        
+        .grid-services {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .service-card {
+            background: var(--bg-card); padding: 2.5rem;
+            border: 1px solid var(--border-subtle); border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+        .service-card:hover { border-color: var(--accent-nexo); }
+        .service-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        
+        .service-link {
+            color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 0.85rem;
+            display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;
+        }
+        .service-card:hover .service-link { color: var(--accent-nexo); }
+
+        /* SECCIÓN CDS (Confianza) */
+        .cds-trust {
+            margin: 2rem 5% 5rem; max-width: 1200px; margin-left: auto; margin-right: auto;
+            background: linear-gradient(90deg, rgba(0, 242, 255, 0.05), transparent);
+            border-left: 4px solid var(--accent-cds);
+            padding: 3rem; border-radius: 0 8px 8px 0;
+            display: flex; flex-direction: column; gap: 1rem;
+        }
+        .cds-trust h3 { font-size: 1.5rem; color: var(--text-main); }
+        .cds-trust p { color: var(--text-muted); max-width: 800px; }
+        .cds-link { color: var(--accent-cds); font-weight: 600; text-decoration: none; font-size: 0.9rem;}
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 3rem 5%; text-align: center;
+            background: var(--bg-card);
+        }
+        footer p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+        footer a { color: var(--text-main); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-nexo); }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <a href="#" class="logo">NEXO <span>WEB</span><br><small style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted); letter-spacing: 2px;">Agencia Creativa Elite</small></a>
-    <a href="#contacto" class="btn-secondary">Agendar Asesoría</a>
-  </nav>
+    <nav>
+        <a href="#" class="nav-brand">
+            NEXO<span>.</span>
+            <span class="nav-sub">División Arquitectura Digital</span>
+        </a>
+        <a href="https://wa.me/5491124632544?text=Hola,%20solicito%20asesoramiento%20sobre%20sus%20servicios%20de%20desarrollo%20web." class="btn-outline">Agendar Asesoría</a>
+    </nav>
 
-  <header class="hero">
-    <div style="border: 1px solid var(--accent-pink); color: var(--accent-pink); padding: 8px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 30px; text-transform: uppercase; background: rgba(236, 72, 153, 0.05);">Diseño de Alta Conversión</div>
-    <h1>Diseñamos tu <span>Éxito Digital</span></h1>
-    <p style="max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-muted);">
-      Creamos páginas web, tiendas online y landing pages premium que no solo se ven increíbles, sino que <strong>generan ventas reales</strong>.
-    </p>
-    <a href="#servicios" class="btn-primary">Ver Nuestros Servicios</a>
-  </header>
+    <header class="hero">
+        <span class="hero-tag">Desarrollo Web & Ecosistemas</span>
+        <h1>Infraestructuras para <span>Escalar</span></h1>
+        <p>Construimos activos digitales de alto rendimiento. Páginas web corporativas y plataformas de venta diseñadas para generar conversiones reales y estabilidad técnica.</p>
+        <a href="https://nexo-landing.pages.dev/" class="btn-solid">Ver Catálogo de Ecosistemas</a>
+    </header>
 
-  <section id="servicios">
-    <h2 style="text-align: center; margin-bottom: 60px; font-size: 2.8rem;">Soluciones <span style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Creativas</span></h2>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-      
-      <article class="card">
-        <h3 style="font-size: 1.6rem; margin-bottom: 15px;">Sitios Web Corporativos</h3>
-        <p style="color: var(--text-muted);">Diseño a medida para empresas que buscan transmitir autoridad, confianza y profesionalismo en su sector.</p>
-      </article>
+    <section id="servicios" class="services">
+        <div class="section-header">
+            <h2>Soluciones B2B</h2>
+            <p style="color: var(--text-muted);">Estructuras diseñadas según los objetivos de tu modelo de negocio.</p>
+        </div>
+        
+        <div class="grid-services">
+            <article class="service-card">
+                <h3>Landing Pages (Captación)</h3>
+                <p>Infraestructuras de una sola página, optimizadas para velocidad extrema y conversión directa de campañas de marketing.</p>
+                <a href="https://nexo-landing.pages.dev/" class="service-link">Ver modelos base →</a>
+            </article>
 
-      <article class="card">
-        <h3 style="font-size: 1.6rem; margin-bottom: 15px;">Landing Pages</h3>
-        <p style="color: var(--text-muted);">Páginas de aterrizaje ultra rápidas y optimizadas psicológicamente para convertir visitantes en clientes (Leads).</p>
-      </article>
+            <article class="service-card">
+                <h3>Sitios Corporativos (Autoridad)</h3>
+                <p>Desarrollo multi-sección para empresas que requieren comunicar solidez institucional, servicios detallados y generar confianza B2B.</p>
+                <a href="https://nexo-landing.pages.dev/" class="service-link">Ver arquitecturas →</a>
+            </article>
 
-      <article class="card">
-        <h3 style="font-size: 1.6rem; margin-bottom: 15px;">E-commerce / Tiendas</h3>
-        <p style="color: var(--text-muted);">Plataformas de venta online seguras, intuitivas y diseñadas para maximizar la tasa de conversión y el ticket promedio.</p>
-      </article>
+            <article class="service-card">
+                <h3>E-commerce (Ventas)</h3>
+                <p>Plataformas transaccionales robustas, catálogos digitales interactivos y sistemas de reserva integrados para maximizar el ticket promedio.</p>
+                <a href="https://nexo-landing.pages.dev/" class="service-link">Ver catálogo →</a>
+            </article>
+        </div>
+    </section>
 
-      <article class="card">
-        <h3 style="font-size: 1.6rem; margin-bottom: 15px;">Rediseño y UX/UI</h3>
-        <p style="color: var(--text-muted);">Auditamos y modernizamos tu sitio web actual para adaptarlo a los estándares estéticos y técnicos del mercado.</p>
-      </article>
+    <section class="cds-trust">
+        <h3>Respaldado por CDS Consultoría</h3>
+        <p>La estética no es nada sin seguridad. Como parte del <strong>Ecosistema CDS</strong>, tus activos digitales son auditados y pueden contar con hardening de servidores y soporte IT especializado.</p>
+        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" rel="noopener noreferrer" class="cds-link">Conocer División de Ciberseguridad ↗</a>
+    </section>
 
-    </div>
-
-    <div style="border-left: 4px solid var(--accent-purple); padding: 40px; background: linear-gradient(90deg, rgba(139, 92, 246, 0.05), transparent); margin: 80px 0 0; border-radius: 0 20px 20px 0;">
-      <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Respaldado por CDS Consultoría</h3>
-      <p style="color: var(--text-muted); margin-bottom: 25px;">
-        La estética no es nada sin seguridad. Como parte del <strong>Ecosistema CDS</strong>, tus activos digitales pueden ser alojados en infraestructuras blindadas y contar con soporte IT 24/7.
-      </p>
-      <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display: inline-block;">
-        Conocer CDS Consultoría ↗
-      </a>
-    </div>
-  </section>
-
-  <section id="contacto" class="card" style="margin: 0 5% 100px; text-align: center;">
-    <h2 style="margin-bottom: 30px; font-size: 2.2rem;">Lleva tu marca al siguiente nivel</h2>
-    
-    <form id="nexoForm" action="https://formspree.io/f/xpqynaqq" method="POST" style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
-      
-      <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-        <input type="text" name="nombre" placeholder="Tu Nombre" required style="flex: 1; min-width: 200px; padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; font-size: 1rem;">
-        <input type="text" name="empresa" placeholder="Empresa / Proyecto" style="flex: 1; min-width: 200px; padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; font-size: 1rem;">
-      </div>
-
-      <input type="email" name="email" placeholder="Correo Electrónico" required style="padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; font-size: 1rem;">
-      
-      <select name="servicio" required style="padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; cursor: pointer; font-size: 1rem;">
-        <option value="" disabled selected>¿Qué necesitas diseñar?</option>
-        <option value="Landing Page">Landing Page (Alta Conversión)</option>
-        <option value="Sitio Corporativo">Sitio Web Corporativo</option>
-        <option value="Tienda Online">E-commerce / Tienda Online</option>
-        <option value="Rediseño">Rediseño de sitio actual</option>
-        <option value="Seguridad CDS">Necesito Seguridad/Soporte IT (Ir a CDS)</option>
-        <option value="Otro">Otro proyecto</option>
-      </select>
-
-      <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto o idea..." required style="padding: 16px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.5); color: white; outline: none; font-family: inherit; min-height: 140px; resize: vertical; font-size: 1rem;"></textarea>
-
-      <button type="submit" id="nexo-btn" class="btn-primary" style="width: 100%;">Agendar Asesoría Creativa</button>
-      
-      <div id="form-status" style="margin-top: 10px; font-weight: 600; font-size: 0.95rem;"></div>
-    </form>
-  </section>
-
-  <footer style="border-top: 1px solid var(--card-border); padding: 40px 5%; text-align: center; background: var(--bg-secondary);">
-    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
-      <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Nexo Web. Todos los derechos reservados.</p>
-      <p style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 0.5px;">
-        Una división creativa del <strong>Ecosistema CDS</strong> | Infraestructura IT por 
-        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-purple); text-decoration: none; font-weight: 700; transition: var(--transition-smooth);">CDS Consultoría ↗</a>
-      </p>
-    </div>
-  </footer>
+    <footer>
+        <p>&copy; 2026 Nexo Web. Todos los derechos reservados.</p>
+        <p>Parte del Ecosistema <a href="https://consultoriainformaticacds.pages.dev/" target="_blank">CDS Consultoría Informática</a></p>
+    </footer>
 
 </body>
 </html>
