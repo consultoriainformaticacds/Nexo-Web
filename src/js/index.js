@@ -1,75 +1,93 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('nexoForm');
-    const status = document.getElementById('form-status');
-    const btn = document.getElementById('nexo-btn');
-
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Evita que la página salte
-            
-            const originalText = btn.innerText;
-            const data = new FormData(form);
-            
-            // UX Visual: Botón procesando
-            btn.innerText = "Procesando...";
-            btn.disabled = true;
-            btn.style.opacity = '0.7';
-            if (status) status.innerHTML = ""; 
-
-            try {
-                // Enviamos a tu endpoint específico de Nexo Web
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    // Magia Visual Creativa
-                    btn.innerText = "¡Asesoría Solicitada!";
-                    btn.style.background = "var(--accent-pink)";
-                    btn.style.color = "#fff";
-                    btn.style.opacity = '1';
-                    
-                    if (status) {
-                        status.innerHTML = "¡Gracias! Nuestro equipo creativo te contactará muy pronto.";
-                        status.style.color = "var(--accent-pink)";
-                    }
-                    form.reset(); // Limpia los campos
-
-                    // Volver a la normalidad en 5 seg
-                    setTimeout(() => {
-                        btn.innerText = originalText;
-                        btn.style.background = "var(--accent-gradient)";
-                        btn.style.color = "white";
-                        btn.disabled = false;
-                        if (status) status.innerHTML = "";
-                    }, 5000);
-
-                } else {
-                    const result = await response.json();
-                    if (status) {
-                        status.innerHTML = "Hubo un error: " + (result.errors ? result.errors[0].message : "Intenta nuevamente");
-                        status.style.color = "#ff4444"; 
-                    }
-                    throw new Error('Error de Formspree');
-                }
-            } catch (error) {
-                // Plan B: Falla de red
-                if (status && !status.innerHTML) {
-                    status.innerHTML = "Error de conexión. Por favor, intenta más tarde.";
-                    status.style.color = "#ff4444";
-                }
-                btn.style.borderColor = "#ff4444";
-                
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = "var(--accent-gradient)";
-                    btn.style.borderColor = "transparent";
-                    btn.disabled = false;
-                    btn.style.opacity = '1';
-                }, 5000);
-            }
-        });
+// ===========================
+// SCROLL REVEAL
+// ===========================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ===========================
+// NAVBAR — scroll effect & hamburger
+// ===========================
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar?.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+const hamburger = document.getElementById('nav-hamburger');
+const navLinks  = document.getElementById('nav-links');
+
+hamburger?.addEventListener('click', () => {
+  navLinks?.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', navLinks?.classList.contains('open'));
+});
+
+navLinks?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// ===========================
+// CONTACT FORM — Formspree AJAX
+// ===========================
+const form   = document.getElementById('nexoForm');
+const status = document.getElementById('form-status');
+const btn    = document.getElementById('nexo-btn');
+
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const originalText = btn.textContent;
+  btn.textContent = 'Procesando...';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+  if (status) status.textContent = '';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      btn.textContent = '¡Asesoría Solicitada!';
+      btn.style.opacity = '1';
+      btn.style.background = 'var(--white)';
+      if (status) {
+        status.textContent = '¡Gracias! Nuestro equipo se contactará pronto.';
+        status.style.color = 'var(--accent)';
+      }
+      form.reset();
+      
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.cssText = '';
+        btn.disabled = false;
+        if (status) status.textContent = '';
+      }, 5000);
+
+    } else {
+      const result = await response.json();
+      const msg = result?.errors?.[0]?.message ?? 'Error desconocido';
+      if (status) { status.textContent = 'Error: ' + msg; status.style.color = '#ff4444'; }
+      btn.textContent = originalText;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
+
+  } catch {
+    if (status) {
+      status.textContent = 'Sin conexión. Escribinos por WhatsApp.';
+      status.style.color = '#ff4444';
+    }
+    btn.textContent = originalText;
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  }
 });

@@ -1,19 +1,41 @@
 :root {
-  /* Paleta Élite Agencia Creativa (Nexo Web) */
-  --bg-primary: #050505; /* Negro puro muy elegante */
-  --bg-secondary: #111111; /* Gris oscuro para contrastes */
-  --accent-purple: #8b5cf6; /* El color que lo conecta con CDS */
-  --accent-pink: #ec4899; /* Toque vibrante creativo */
-  --accent-gradient: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-  --text-main: #ffffff;
-  --text-muted: #a3a3a3;
-  
-  /* Efectos Glassmorphism (Cristal) */
-  --card-border: rgba(255, 255, 255, 0.08);
-  --card-bg: rgba(20, 20, 20, 0.6);
-  --nav-bg: rgba(5, 5, 5, 0.85);
-  
-  /* Transiciones y Sombras */
-  --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  --shadow-creative: 0 10px 40px -10px rgba(236, 72, 153, 0.2);
+  /* === IDENTIDAD NEXO WEB === */
+  --black:       #0A0A0A;
+  --off-black:   #111110;
+  --dark:        #1A1A18;
+  --darker:      #0D0D0C;
+
+  --accent:      #C8F135;   /* Verde neón — color marca Nexo */
+  --accent-dark: #A8D020;
+  --accent-dim:  rgba(200, 241, 53, 0.08);
+  --accent-border: rgba(200, 241, 53, 0.2);
+
+  --white:       #F8F8F5;
+  --muted:       #888880;
+  --faint:       #444440;
+
+  --border:      rgba(255, 255, 255, 0.07);
+  --border-md:   rgba(255, 255, 255, 0.12);
+
+  /* === TIPOGRAFÍA === */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Instrument Sans', sans-serif;
+
+  /* === TRANSICIONES === */
+  --t-fast:   all 0.2s ease;
+  --t-smooth: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* === LAYOUT === */
+  --nav-h:     72px;
+  --pad-x:     5%;
+  --pad-x-lg:  7%;
+  --section-v: 90px;
+  --radius:    4px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --pad-x: 6%;
+    --section-v: 120px;
+  }
 }

@@ -1,197 +1,222 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexo Web | Arquitectura Digital para Empresas</title>
-    <meta name="description" content="Diseño y desarrollo de infraestructuras web B2B de alto rendimiento. Ecosistemas digitales escalables, auditados por CDS.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        /* RESET & VARIABLES (Design System Nexo 2026) */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg-dark: #0A0A0A;
-            --bg-card: #111110;
-            --accent-nexo: #C8F135; /* Verde Neón */
-            --accent-cds: #00f2ff; /* Cian Seguridad */
-            --text-main: #F8F8F5;
-            --text-muted: #888888;
-            --border-subtle: rgba(255, 255, 255, 0.1);
-        }
-        
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Instrument Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexo Web | Arquitectura Digital para Empresas</title>
+<meta name="description" content="Diseño y desarrollo de infraestructuras web B2B de alto rendimiento. Ecosistemas digitales escalables, auditados por CDS.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Nexo Web | Arquitectura Digital B2B">
+<meta property="og:description" content="Construimos activos digitales de alto rendimiento.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nexoweb.pages.dev/">
 
-        h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
-        /* NAVEGACIÓN */
-        nav {
-            position: sticky; top: 0; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.2rem 5%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-        .nav-brand {
-            text-decoration: none; color: var(--text-main);
-            font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem;
-            line-height: 1.2;
-        }
-        .nav-brand span { color: var(--accent-nexo); }
-        .nav-sub { display: block; font-family: 'Instrument Sans'; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px; font-weight: 400;}
-        
-        .btn-outline {
-            border: 1px solid var(--accent-nexo); color: var(--accent-nexo);
-            padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none;
-            font-size: 0.8rem; font-weight: 600; transition: all 0.3s ease;
-        }
-        .btn-outline:hover { background: var(--accent-nexo); color: var(--bg-dark); }
+<link rel="stylesheet" href="./src/css/variables.css">
+<link rel="stylesheet" href="./src/css/base.css">
+<link rel="stylesheet" href="./src/css/layout.css">
+<link rel="stylesheet" href="./src/css/components.css">
 
-        /* HERO SECTION */
-        .hero {
-            padding: 7rem 5% 5rem;
-            text-align: center;
-            max-width: 900px; margin: 0 auto;
-        }
-        .hero-tag {
-            display: inline-block;
-            color: var(--accent-nexo); font-size: 0.75rem; font-weight: 600;
-            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem;
-            padding: 0.4rem 1rem; border: 1px solid rgba(200, 241, 53, 0.2); border-radius: 4px;
-            background: rgba(200, 241, 53, 0.05);
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-        .hero h1 span { -webkit-text-stroke: 1px var(--text-main); color: transparent; }
-        .hero p {
-            font-size: 1.1rem; color: var(--text-muted);
-            max-width: 700px; margin: 0 auto 2.5rem; font-weight: 400;
-        }
-        
-        .btn-solid {
-            background: var(--accent-nexo); color: var(--bg-dark);
-            padding: 1rem 2rem; border-radius: 4px; text-decoration: none;
-            font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.9rem;
-            text-transform: uppercase; transition: transform 0.2s ease;
-            display: inline-block;
-        }
-        .btn-solid:hover { transform: translateY(-2px); }
-
-        /* SERVICIOS / ARQUITECTURAS */
-        .services { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-        
-        .grid-services {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .service-card {
-            background: var(--bg-card); padding: 2.5rem;
-            border: 1px solid var(--border-subtle); border-radius: 4px;
-            transition: border-color 0.3s ease;
-        }
-        .service-card:hover { border-color: var(--accent-nexo); }
-        .service-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
-        .service-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-        
-        .service-link {
-            color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 0.85rem;
-            display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;
-        }
-        .service-card:hover .service-link { color: var(--accent-nexo); }
-
-        /* SECCIÓN CDS (Confianza) */
-        .cds-trust {
-            margin: 2rem 5% 5rem; max-width: 1200px; margin-left: auto; margin-right: auto;
-            background: linear-gradient(90deg, rgba(0, 242, 255, 0.05), transparent);
-            border-left: 4px solid var(--accent-cds);
-            padding: 3rem; border-radius: 0 8px 8px 0;
-            display: flex; flex-direction: column; gap: 1rem;
-        }
-        .cds-trust h3 { font-size: 1.5rem; color: var(--text-main); }
-        .cds-trust p { color: var(--text-muted); max-width: 800px; }
-        .cds-link { color: var(--accent-cds); font-weight: 600; text-decoration: none; font-size: 0.9rem;}
-
-        /* FOOTER */
-        footer {
-            border-top: 1px solid var(--border-subtle);
-            padding: 3rem 5%; text-align: center;
-            background: var(--bg-card);
-        }
-        footer p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
-        footer a { color: var(--text-main); text-decoration: none; transition: color 0.2s; }
-        footer a:hover { color: var(--accent-nexo); }
-    </style>
+<script type="module" src="./src/js/index.js" defer></script>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="nav-brand">
-            NEXO<span>.</span>
-            <span class="nav-sub">División Arquitectura Digital</span>
-        </a>
-        <a href="https://wa.me/5491124632544?text=Hola,%20solicito%20asesoramiento%20sobre%20sus%20servicios%20de%20desarrollo%20web." class="btn-outline">Agendar Asesoría</a>
-    </nav>
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo" aria-label="Nexo Web Inicio">
+    NEXO<span>.</span>
+    <small>División Arquitectura Digital</small>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="#servicios" class="nav-link">Arquitecturas</a>
+    <a href="#proceso" class="nav-link">Metodología</a>
+    <a href="#contacto" class="nav-cta">Agendar Asesoría</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-    <header class="hero">
-        <span class="hero-tag">Desarrollo Web & Ecosistemas</span>
-        <h1>Infraestructuras para <span>Escalar</span></h1>
-        <p>Construimos activos digitales de alto rendimiento. Páginas web corporativas y plataformas de venta diseñadas para generar conversiones reales y estabilidad técnica.</p>
-        <a href="https://nexo-landing.pages.dev/" class="btn-solid">Ver Catálogo de Ecosistemas</a>
-    </header>
+<header id="inicio" class="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow-bg" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Design & Tech Agency</div>
+    <h1 class="hero-title">
+      Activos<br>
+      <span class="outline">Digitales</span><br>
+      para <span class="accent">Escalar</span>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">Páginas web corporativas y plataformas de venta diseñadas para generar conversiones reales y estabilidad técnica. Estética premium con cimientos de ciberseguridad.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-solid">Iniciar Proyecto</a>
+        <a href="https://nexo-landing.pages.dev/" target="_blank" rel="noopener" class="btn-ghost">Ver Catálogo</a>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <section id="servicios" class="services">
-        <div class="section-header">
-            <h2>Soluciones B2B</h2>
-            <p style="color: var(--text-muted);">Estructuras diseñadas según los objetivos de tu modelo de negocio.</p>
-        </div>
-        
-        <div class="grid-services">
-            <article class="service-card">
-                <h3>Landing Pages (Captación)</h3>
-                <p>Infraestructuras de una sola página, optimizadas para velocidad extrema y conversión directa de campañas de marketing.</p>
-                <a href="https://nexo-landing.pages.dev/" class="service-link">Ver modelos base →</a>
-            </article>
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Diseño High-End</div>
+    <div class="ticker-item">Performance Extrema</div>
+    <div class="ticker-item">Conversión B2B</div>
+    <div class="ticker-item">Auditoría CDS</div>
+    <div class="ticker-item">SEO Técnico</div>
+    <div class="ticker-item">Diseño High-End</div>
+    <div class="ticker-item">Performance Extrema</div>
+    <div class="ticker-item">Conversión B2B</div>
+    <div class="ticker-item">Auditoría CDS</div>
+    <div class="ticker-item">SEO Técnico</div>
+  </div>
+</div>
 
-            <article class="service-card">
-                <h3>Sitios Corporativos (Autoridad)</h3>
-                <p>Desarrollo multi-sección para empresas que requieren comunicar solidez institucional, servicios detallados y generar confianza B2B.</p>
-                <a href="https://nexo-landing.pages.dev/" class="service-link">Ver arquitecturas →</a>
-            </article>
+<section id="servicios">
+  <div class="section-label reveal">Soluciones B2B</div>
+  <h2 class="section-title reveal">Infraestructuras<br>a tu medida.</h2>
+  
+  <div class="servicios-grid reveal">
+    <div class="servicio-card">
+      <div class="servicio-num">01</div>
+      <div class="servicio-icon">⚡</div>
+      <h3 class="servicio-name">Landing Pages</h3>
+      <p class="servicio-desc">Infraestructuras de una sola página, optimizadas para velocidad extrema y conversión directa de campañas de marketing.</p>
+      <a href="https://nexo-landing.pages.dev/" target="_blank" class="servicio-link">Ver modelos y comparativa →</a>
+    </div>
+    
+    <div class="servicio-card">
+      <div class="servicio-num">02</div>
+      <div class="servicio-icon">🏢</div>
+      <h3 class="servicio-name">Sitios Corporativos</h3>
+      <p class="servicio-desc">Desarrollo multi-sección para empresas que requieren comunicar solidez institucional, servicios detallados y generar confianza B2B.</p>
+      <a href="https://nexo-landing.pages.dev/" target="_blank" class="servicio-link">Ver modelos y comparativa →</a>
+    </div>
 
-            <article class="service-card">
-                <h3>E-commerce (Ventas)</h3>
-                <p>Plataformas transaccionales robustas, catálogos digitales interactivos y sistemas de reserva integrados para maximizar el ticket promedio.</p>
-                <a href="https://nexo-landing.pages.dev/" class="service-link">Ver catálogo →</a>
-            </article>
-        </div>
-    </section>
+    <div class="servicio-card">
+      <div class="servicio-num">03</div>
+      <div class="servicio-icon">🛒</div>
+      <h3 class="servicio-name">E-Commerce</h3>
+      <p class="servicio-desc">Plataformas transaccionales robustas y catálogos digitales interactivos diseñados para maximizar el ticket promedio de ventas.</p>
+      <a href="https://nexo-landing.pages.dev/" target="_blank" class="servicio-link">Ver modelos y comparativa →</a>
+    </div>
+  </div>
+</section>
 
-    <section class="cds-trust">
+<section id="proceso">
+  <div class="section-label reveal">Metodología Nexo</div>
+  <h2 class="section-title reveal">Proceso de<br>Creación.</h2>
+  
+  <div class="proceso-grid reveal">
+    <div class="proceso-step">
+      <div class="paso-num">1</div>
+      <h3 class="paso-title">Discovery</h3>
+      <p class="paso-desc">Analizamos tu modelo de negocio, buyer persona y objetivos de facturación para definir la arquitectura ideal.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">2</div>
+      <h3 class="paso-title">Diseño UI/UX</h3>
+      <p class="paso-desc">Creamos interfaces premium enfocadas en la retención del usuario y la optimización de las tasas de conversión.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">3</div>
+      <h3 class="paso-title">Desarrollo</h3>
+      <p class="paso-desc">Codificación con stack moderno, asegurando tiempos de carga milisegundos y código limpio, libre de plugins pesados.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">4</div>
+      <h3 class="paso-title">Deployment & QA</h3>
+      <p class="paso-desc">Auditoría final de seguridad por CDS y lanzamiento en infraestructura global escalable.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-block reveal">
+    <div class="cta-text">
+      <h2>¿Listo para subir de nivel?</h2>
+      <p>Agendá una llamada de exploración y veamos cómo podemos ayudar a tu empresa.</p>
+    </div>
+    <a href="#contacto" class="btn-dark">Agendar Llamada</a>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="contacto-grid">
+    <div class="contacto-info reveal">
+      <div class="section-label">Hablemos</div>
+      <h2 class="contacto-info-title">Construyamos tu próximo activo.</h2>
+      <p>Dejanos tus datos y un arquitecto digital se pondrá en contacto para evaluar tu proyecto sin compromiso.</p>
+      
+      <div class="contacto-dato">
+        <strong>WhatsApp</strong>
+        <span>+54 9 11 2463-2544</span>
+      </div>
+      <div class="contacto-dato">
+        <strong>Email</strong>
+        <span>hola@nexoweb.com</span>
+      </div>
+      
+      <div class="cds-block reveal" style="margin-top: 40px;">
         <h3>Respaldado por CDS Consultoría</h3>
-        <p>La estética no es nada sin seguridad. Como parte del <strong>Ecosistema CDS</strong>, tus activos digitales son auditados y pueden contar con hardening de servidores y soporte IT especializado.</p>
-        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" rel="noopener noreferrer" class="cds-link">Conocer División de Ciberseguridad ↗</a>
-    </section>
+        <p>Como parte del Ecosistema CDS, tus activos digitales nacen auditados. Infraestructura robusta, hardening de servidores y soporte IT especializado.</p>
+        <a href="https://consultoriainformaticacds.pages.dev/" target="_blank" rel="noopener" class="cds-link">Conocer División Seguridad ↗</a>
+      </div>
+    </div>
+    
+    <div class="contacto-form-wrapper reveal">
+      <form id="nexoForm" action="https://formspree.io/f/maqpkdog" method="POST" class="contacto-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div class="form-field">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="email">Correo Corporativo</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-field">
+          <label for="tipo">Tipo de Proyecto</label>
+          <select id="tipo" name="tipo" required>
+            <option value="" disabled selected>Seleccionar opción...</option>
+            <option value="Landing Page">Landing Page (Captación)</option>
+            <option value="Sitio Corporativo">Sitio Corporativo (Autoridad)</option>
+            <option value="E-Commerce">E-Commerce (Ventas)</option>
+            <option value="Otro">Otro / Asesoría</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="mensaje">Detalles del proyecto</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Contanos brevemente qué necesitás..." required></textarea>
+        </div>
+        <button type="submit" id="nexo-btn" class="form-submit">Enviar Solicitud</button>
+        <div id="form-status"></div>
+      </form>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 Nexo Web. Todos los derechos reservados.</p>
-        <p>Parte del Ecosistema <a href="https://consultoriainformaticacds.pages.dev/" target="_blank">CDS Consultoría Informática</a></p>
-    </footer>
+<footer>
+  <div class="footer-logo">NEXO<span>.</span></div>
+  <div class="footer-links">
+    <a href="#servicios">Arquitecturas</a>
+    <a href="https://nexo-landing.pages.dev/" target="_blank">Catálogo y Precios</a>
+    <a href="https://consultoriainformaticacds.pages.dev/" target="_blank">CDS Ciberseguridad</a>
+  </div>
+  <div class="footer-copy">© 2026 Nexo Web. División Arquitectura Digital de CDS.</div>
+</footer>
+
+<a href="https://wa.me/5491124632544?text=Hola,%20solicito%20asesoramiento%20sobre%20sus%20servicios%20de%20desarrollo%20web." target="_blank" rel="noopener noreferrer" class="wa-fab" id="wa-fab" aria-label="Contactar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 </body>
 </html>
